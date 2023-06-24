@@ -34,4 +34,4 @@ PRO  = Nome do professor com três letras
 "IRE":"Irene Strauch"
 "E_F":"Esequia/Fabio"
 ```
-* Para definir outras turmas ou professores veja o script monta_html
+* Para definir outras turmas ou professores veja o script ```monta_html.py```
