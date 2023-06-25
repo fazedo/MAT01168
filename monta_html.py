@@ -10,7 +10,7 @@ professores = {"ESE":"Esequia Sauter",
                "IRE":"Irene Strauch",
                "E_F":"Esequia/Fabio"}
 
-turmas = {"A":"A", "B":"B", "C":"C", "D":"D", "H":"A1"} ## etc
+turmas = {"A":"A", "B":"B", "C":"C", "D":"D"} ## pode-se inserir "h":"A1", "H":"A2 etc.
 
 template_area = r"""
         <tr>
@@ -21,15 +21,20 @@ template_area = r"""
 """
 template_gabarito = r"""<a href="___DIRNAME___/___FILENAME___">Gabarito</a>"""
 
-def parse_nome(nome): # provaNTaaaaS[gab]PRO.pdf" aaaa= ano  S=semestre T=turma PRO=professor
-    # print(nome)
-    gab = nome[17:20] == "gab"
-    # print(nome[17:20])
-    l = len(nome)
+def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma PRO=professor
+    gab = nome[17:20] == "gab" # isso não é um erro mesmo que a string tenha menos de 20 caracteres.
+    
+    l = len(nome)   
     l_valido = (l == 20 and not gab) or (l == 24 and gab) # há apenas dois comprimentos válidos
     
     if  not l_valido:
-        print("Comprimento inválido:", l)
+        print("Nome de arquivo inválido:", l)
+        return None
+    
+    # A partir daqui, sabe-se que nome tem pelo menos 20 caracteres
+
+    if nome[10] != "_" or nome[12] != "_" or (gab and nome[16] != "_"):
+        print("Nome de arquivo inválido.")
         return None
         
     if  nome[0:5] != "prova": 
@@ -37,12 +42,11 @@ def parse_nome(nome): # provaNTaaaaS[gab]PRO.pdf" aaaa= ano  S=semestre T=turma 
         return None
     
     if  nome[-4:] != ".pdf": 
-        print("Não é pdf:", nome)
+        print("Não é .pdf:", nome)
         return None
     
-    
     # numero   = nome[5] # só serve para testar o nome do arquivo - excluido
-    ano      = nome[5:5+4]
+    ano      = nome[5:9]
     semestre = nome[9]
     turma    = nome[11]
     prof     = nome[13:16]
@@ -116,7 +120,7 @@ def completa_template_area(sdirname):
         gab = prova in gabaritos
 
         nome_arq = provas[prova]
-        comentario = f"Turma {turma} {ano}/{semestre} - prof. {nome_prof}"
+        comentario = f"Turma {turmas[turma]} {ano}/{semestre} - prof. {nome_prof}"
         texto_gabarito = template_gabarito.replace("___DIRNAME___", sdirname)\
                                         .replace("___FILENAME___", gabaritos[prova]) if gab else ""
         
@@ -125,7 +129,7 @@ def completa_template_area(sdirname):
                                      .replace("___DESCRICAO___", comentario) \
                                      .replace("___GABARITO___", texto_gabarito)
         
-        lista_provas.append((ano, semestre, turma, texto_questao))
+        lista_provas.append((ano, semestre, turmas[turma], texto_questao))
 
     lista_provas.sort(reverse=True, key=lambda x:(x[0], x[1], -ord(x[2]), x[3])) # ordem decrescente do ano/semestre, mas crescente na turma
     texto_final = "\n".join([t[-1] for t in lista_provas])
