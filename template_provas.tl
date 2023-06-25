@@ -92,7 +92,7 @@ font-weight: bold;
     <table>
       <tbody>
         
-        ___PROVAS___VETORIAL___
+        ___PROVAS___FOURIER___
        </tbody>
       </table>
     
