@@ -1,0 +1,396 @@
+%!TEX program = pdflatex
+
+\documentclass[10pt,a4paper]{article}%
+\usepackage{amsmath,amsfonts,amstext,amsthm,esint}%,esint
+\usepackage{graphics}%
+\usepackage[dvips]{graphicx}%
+
+ \usepackage{tabu}
+\pagestyle{empty}%
+
+\usepackage{layout}  
+% 
+
+\setlength{\topmargin}{-2.5cm} \setlength{\oddsidemargin}{-1cm} %%% top margin -3
+\setlength{\evensidemargin}{1cm} \setlength{\textheight}{27cm}
+\setlength{\textwidth}{18cm}
+
+
+\renewcommand{\sin}{\operatorname{sen}}
+\renewcommand{\sinh}{\operatorname{senh}}
+
+\newcommand{\rot}{\vec{\nabla}\times}
+\newcommand{\grad}{\vec{\nabla}}
+\newcommand{\diver}{\vec{\nabla}\cdot}
+\newcommand{\F}{\vec{F}}
+\newcommand{\G}{\vec{G}}
+
+\everymath{\displaystyle}
+\begin{document}
+
+\noindent
+\begin{minipage}[l]{11.4cm}
+
+     {\bf UFRGS -- INSTITUTO DE MATEMÁTICA E ESTATÍSTICA}
+
+    {\bf Departamento de Matemática Pura e Aplicada}
+  
+   {\bf MAT01168}
+
+    {\bf Prova da área IIA}
+\end{minipage}\hfill\begin{minipage}{5.85cm}
+    \begin{tabular}{|c|c|c|c|}  \hline
+        {\bf } & {\bf }& {\bf }&   {\bf }\!\! \\
+        \hline
+         \hline \hspace{1cm} & \hspace{1cm}   & \hspace{1cm}  & \hspace{1cm} \\
+        &&& \\
+
+        &&& \\
+        \hline
+    \end{tabular}
+\end{minipage}
+
+\vspace{0.2cm} \noindent \rule {17.9cm}{0.05cm}
+
+\linespread{1.0}
+
+\vspace{0,2cm} {\normalsize \noindent {\bf Nome:} \underline
+{\hspace{11.9cm}} {\bf Cartão:} \underline {\hspace{3.1cm}} 
+
+\large
+%%%%%%%%%%%%%%% questão 1
+\vspace{.5cm}
+
+\noindent {\footnotesize
+Regras Gerais:
+\begin{itemize}
+\item Não é permitido o uso de calculadoras, telefones ou qualquer outro recurso computacional ou de comunicação.
+\item Trabalhe individualmente e sem uso de material de consulta além do fornecido.
+\item Devolva o caderno de questões preenchido ao final da prova.
+\end{itemize}
+Regras para as questões abertas
+\begin{itemize}
+\item Seja sucinto, completo e claro.
+\item Justifique todo procedimento usado. 
+\item Indique identidades matemáticas usadas, em especial, itens da tabela.
+\item Use notação matemática consistente.
+\end{itemize}
+\vspace{5pt}
+
+\vspace{5pt}
+\begin{minipage}[l]{10cm}
+\noindent {\footnotesize Tabela do operador $\vec{\nabla}$:\\
+$f=f(x,y,z)$ e $g=g(x,y,z)$ são funções escalares;\\ $\vec{F}=\vec{F}(x,y,z)$ e $\vec{G}=\vec{G}(x,y,z)$ são funções vetoriais.\\
+{\tabulinesep=1mm
+\begin{tabu}{|l|c|}
+\hline
+1.& $\displaystyle\vec{\nabla}\left(f+g\right)=\vec{\nabla}f+\vec{\nabla}g$\\
+\hline
+2.& $\displaystyle\vec{\nabla}\cdot\left(\vec{F}+\vec{G}\right)=\vec{\nabla}\cdot \vec{F}+\vec{\nabla}\cdot \vec{G}$\\
+\hline
+3.&  $\displaystyle\vec{\nabla}\times\left(\vec{F}+\vec{G}\right)=\vec{\nabla}\times \vec{F}+\vec{\nabla}\times \vec{G}$\\
+\hline
+4.&  $\displaystyle\vec{\nabla}\left(fg\right)=f\vec{\nabla} g+g\vec{\nabla} f$\\
+\hline
+5.&  $\displaystyle\vec{\nabla}\cdot\left(f\vec{F}\right)=\left(\vec{\nabla}f\right) \cdot\vec{F}+f\left(\vec{\nabla}\cdot \vec{F}\right)$\\
+\hline
+6.&   $\displaystyle\vec{\nabla}\times\left(f\vec{F}\right)=\vec{\nabla}f \times\vec{F}+f\vec{\nabla}\times \vec{F}$\\
+\hline
+7.&  \begin{tabu}{c} $\displaystyle\vec{\nabla}\cdot \vec{\nabla} f=\vec{\nabla}^2f=\frac{\partial^2f}{\partial x^2}+\frac{\partial^2f}{\partial y^2}+\frac{\partial^2f}{\partial z^2}$,\\onde $\vec{\nabla}^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}$ é o operador laplaciano	\end{tabu}\\
+\hline
+8.&$\displaystyle\vec{\nabla}\times\left( \vec{\nabla} f\right)=0$\\
+\hline
+9.&$\displaystyle\vec{\nabla}\cdot\left( \vec{\nabla}\times \vec{F}\right)=0$\\
+\hline
+10.&$\displaystyle\vec{\nabla}\times\left( \vec{\nabla}\times \vec{F}\right)=\vec{\nabla}\left(\vec{\nabla}\cdot \vec{F}\right)-\vec{\nabla}^2\vec{F}$\\
+\hline
+11.&$\displaystyle\vec{\nabla}\cdot\left( \vec{F}\times \vec{G}\right)=\vec{G}\cdot \left(\vec{\nabla}\times\vec{F}\right)-\vec{F}\cdot \left(\vec{\nabla}\times\vec{G}\right)$\\
+\hline
+12.&$\displaystyle\begin{array}{l}\vec{\nabla}\times\left( \vec{F}\times \vec{G}\right)=\left(\vec{G}\cdot \vec{\nabla}\right)\vec{F}-\vec{G}\left(\vec{\nabla}\cdot \vec{F}\right)-\\ ~\qquad\qquad\qquad-\left(\vec{F}\cdot \vec{\nabla}\right)\vec{G}+\vec{F}\left(\vec{\nabla}\cdot \vec{G}\right)\end{array}$\\
+\hline
+13.&$\displaystyle\begin{array}{l}\vec{\nabla}\left( \vec{F}\cdot \vec{G}\right)=\left(\vec{G}\cdot \vec{\nabla}\right)\vec{F}+\left(\vec{F}\cdot \vec{\nabla}\right)\vec{G}+\\\qquad\qquad\quad+\vec{F}\times\left(\vec{\nabla} \times \vec{G}\right)+\vec{G}\times\left(\vec{\nabla} \times \vec{F}\right)\end{array}$\\
+\hline
+14.&$\vec{\nabla}\varphi(r) = \varphi'(r)\hat{r}$\\
+\hline
+\end{tabu}}
+}
+\end{minipage}\begin{minipage}[l]{5cm}
+\noindent {\footnotesize Curvatura, torção e aceleração:\\
+{\tabulinesep=1mm
+\begin{tabu}{|c|c|}
+\hline
+Nome  & Fórmula\\
+\hline
+Vetor normal & $\vec{N}=\frac{\vec{r}\!~'(t)\times \vec{r}\!~''(t)\times \vec{r}\!~'(t)}{\left\|\vec{r}\!~'(t)\times \vec{r}\!~''(t)\times \vec{r}\!~'(t)\right\|}$ \\
+\hline
+Vetor binormal & $\vec{B}=\frac{\vec{r}\!~'(t)\times \vec{r}\!~''(t)}{\left\|\vec{r}\!~'(t)\times \vec{r}\!~''(t)\right\|}$ \\
+\hline
+ Curvatura & $\kappa=\left\|\frac{d\vec{T}}{ds} \right\|=\left\|\frac{\frac{d\vec{T}}{dt}}{\frac{ds}{dt}} \right\|=\frac{\|\vec{r}\!~'(t)\times\vec{r}\!~''(t)\|}{\|\vec{r}\!~'(t)\|^3}$ \\
+\hline
+ Torção &$\tau=-\frac{d\vec{B}}{ds}\cdot \vec{N}=\frac{\left(\vec{r}\!~'(t)\times \vec{r}\!~''(t)\right) \cdot \vec{r}\!~'''(t)}{\|\vec{r}'(t)\times \vec{r}\!~''(t)\|^2}$ \\
+\hline
+ \begin{tabu}{c} Módulo\\ da Torção\end{tabu} & $|\tau|=\left\|\frac{d\vec{B}}{ds} \right\|=\left\|\frac{\frac{d\vec{B}}{dt}}{\frac{ds}{dt}} \right\|$\\
+\hline
+ \begin{tabu}{c} Aceleração\\ normal\end{tabu} & $a_N=\frac{\|\vec{a}\times\vec{v}\|}{v}=\frac{v^2}{\rho}=\kappa v^2$\\
+\hline
+ \begin{tabu}{c} Aceleração\\ tangencial\end{tabu} & $a_T=\frac{\vec{a}\cdot\vec{v}}{v}=\frac{dv}{dt}$\\
+\hline
+\end{tabu}}
+}
+
+\vspace{10pt}
+
+\noindent Equações de Frenet-Serret:\\
+{\tabulinesep=1mm
+\begin{tabu}{|ccccc|}
+\hline
+$\frac{d \vec{T} }{ds}$ & $=$ &                  &$\kappa   \vec{N}$&\\
+$\frac{d\vec{N}}{ds}$   & $=$ & $-\kappa \vec{T}$&&+$\tau \vec{B}$\\
+$\frac{d\vec{B}}{ds}$   & $=$ &                  &$-\tau\vec{N}$    &\\
+\hline
+\end{tabu}
+}
+
+\end{minipage}
+
+%\layout{cm}
+\end{document}
+\newpage
+
+\vfill
+
+\noindent $\bullet$ {\bf Questão 1} (0.5 ponto cada item) Considere a hélice circular não uniforme dada por:
+ $$\vec{r}(t)=\cos(t)\vec{i} + \sin(t)\vec{j} + e^t\vec{k},~~-\infty<t<\infty.$$
+
+Marque a resposta correta para cada coluna.
+
+\vspace{5mm}         
+
+
+   
+ \noindent\begin{minipage}{8.0cm}
+ Normal unitário em $t=0$:
+ \begin{itemize}
+ \item [(\ \ )] $\vec{N}(0)=\frac{\sqrt{3}}{3}\left(\vec{i}
+-\vec{j}+\vec{k}\right)$%esta
+ \item [(\ \ )] $\vec{N}(0)=\frac{\sqrt{6}}{6}\left(\vec{i}
+-\vec{j}+\vec{k}\right)$
+\item [(\ \ )] $\vec{N}(0)=\frac{\sqrt{6}}{4}\left(-\vec{i}
+-\vec{j}+2\vec{k}\right)$ 
+ \item [(\ \ )] $\vec{N}(0)=\frac{\sqrt{3}}{3}\left(-2\vec{i}
+-\vec{j}+\vec{k}\right)$ 
+ \item [(\ \ )] $\vec{N}(0)=\frac{\sqrt{6}}{6}\left(-2\vec{i}
+-\vec{j}+\vec{k}\right)$ 
+  \end{itemize}\end{minipage}\begin{minipage}{7.0cm}
+ Binormal unitário em $t=0$:
+   \begin{itemize}
+ \item [(\ \ )] $\vec{B}(0)=\frac{\sqrt{3}}{3}\left(\vec{i}
+-\vec{j}+\vec{k}\right)$
+ \item [(\ \ )] $\vec{B}(0)=\frac{\sqrt{6}}{6}\left(\vec{i}
+-\vec{j}+\vec{k}\right)$
+\item [(\ \ )] $\vec{B}(0)=\frac{\sqrt{6}}{4}\left(-\vec{i}
+-\vec{j}+2\vec{k}\right)$ 
+ \item [(\ \ )] $\vec{B}(0)=\frac{\sqrt{3}}{3}\left(-2\vec{i}
+-\vec{j}+\vec{k}\right)$ 
+ \item [(\ \ )] $\vec{B}(0)=\frac{\sqrt{6}}{6}\left(-2\vec{i}
+-\vec{j}+\vec{k}\right)$%esta 
+  \end{itemize}\end{minipage}
+  
+  \vspace{5mm}         
+                                                                                                                                                                              
+ \noindent\begin{minipage}{7.0cm}
+ Curvatura em $t=0$:
+ \begin{itemize}
+ \item [(\ \ )] $\kappa(0)=\frac{\sqrt{6}}{2}$ 
+ \item [(\ \ )] $\kappa(0)=\frac{\sqrt{6}}{4}$%esta 
+ \item [(\ \ )] $\kappa(0)=\frac{\sqrt{3}}{2}$ 
+ \item [(\ \ )] $\kappa(0)=\frac{2}{3}$ 
+ \item [(\ \ )] $\kappa(0)=\frac{1}{3}$ 
+   \end{itemize}\end{minipage}\hspace{1cm}\begin{minipage}{7.0cm}
+Torção em $t=0$:
+ \begin{itemize}
+ \item [(\ \ )] $\tau(0)=\frac{\sqrt{6}}{2}$ 
+ \item [(\ \ )] $\tau(0)=\frac{\sqrt{6}}{4}$ 
+ \item [(\ \ )] $\tau(0)=\frac{\sqrt{3}}{2}$ 
+ \item [(\ \ )] $\tau(0)=\frac{2}{3}$%esta 
+ \item [(\ \ )] $\tau(0)=\frac{1}{3}$ 
+   \end{itemize}\end{minipage}
+
+   
+   \vfill   
+
+   
+\noindent $\bullet$ {\bf Questão 2} (0.5 ponto cada item) Uma abelha viaja sobre uma trajetória $\vec{r}(t)$ com velocidade $\vec{r}\ \!'(t)=\vec{v}(t)=t\vec{i}+t^2\vec{j}+\vec{k}$, $0\leq t\leq 1$. Sabendo que a abelha passa pelo ponto $(1,1,1)$ em $t=0$, marque a resposta correta para cada coluna.
+
+\vspace{5mm}         
+
+
+   
+ \noindent\begin{minipage}{7.0cm}
+Posição da abelha $\vec{r}(t)$
+ \begin{itemize}
+ \item [(\ \ )] $\vec{r}(t)=\frac{t^2}{2}\vec{i}+\frac{t^3}{3}\vec{j}+t\vec{k}$
+ \item [(\ \ )] $\vec{r}(t)=\left(\frac{t^2}{2}+1\right)\vec{i}+\left(\frac{t^3}{3}+1\right)\vec{j}+\left(t+1\right)\vec{k}$%esta
+ \item [(\ \ )] $\vec{r}(t)=\left(\frac{t^2}{2}+1\right)\vec{i}+\left(\frac{t^3}{3}+1\right)\vec{j}+t\vec{k}$
+ \item [(\ \ )] $\vec{r}(t)=\frac{t^2}{2}\vec{i}+\frac{t^3}{3}\vec{j}+\vec{k}$
+ \item [(\ \ )] $\vec{r}(t)=\vec{i}+2t\vec{j}$
+   \end{itemize}\end{minipage}\hspace{1cm}\begin{minipage}{7.0cm}
+Componente tangencial da aceleração $a_T$
+ \begin{itemize}
+ \item [(\ \ )] $a_T=\frac{1+t}{\sqrt{t^2+t+1}}$
+  \item [(\ \ )] $a_T=\frac{t+2t^2}{\sqrt{t^3+t^2+t}}$
+   \item [(\ \ )] $a_T=\frac{1+t^2}{\sqrt{t^4+t^2+t}}$
+    \item [(\ \ )] $a_T=\frac{t+2t^3}{\sqrt{t^4+t^2+1}}$%esta
+     \item [(\ \ )] $a_T=\frac{1+2t}{\sqrt{t^2+t+1}}$
+   \end{itemize}\end{minipage}
+  
+\vfill   
+   
+\noindent $\bullet$ {\bf Questão 3} (0.5 ponto cada item) Considere a superfície fechada limitada pelos plano $x=\pm 2$, $y=\pm 2$ e $z=\pm 2$, orientada para fora, e o campo $\vec{F}=-2(z^2+1)xy\vec{i}+(z^2+1)y^2\vec{j}+xyz^2\vec{k}$.
+
+\vspace{5mm}         
+
+
+   
+ \noindent\begin{minipage}{9.0cm}
+Divergente
+\begin{itemize}
+ \item [(\ \ )] $\vec{\nabla}\cdot \vec{F}=-2(z^2+1)xy+(z^2+1)y^2+xyz^2$
+  \item [(\ \ )] $\vec{\nabla}\cdot \vec{F}=-2(z^2+1)x+xyz^2$
+   \item [(\ \ )] $\vec{\nabla}\cdot \vec{F}=-2(z^2+1)x+xyz$
+    \item [(\ \ )] $\vec{\nabla}\cdot \vec{F}=-(z^2+1)y+2xyz$
+ \item [(\ \ )] $\vec{\nabla}\cdot \vec{F}=2xyz$%esta
+ 
+   \end{itemize}\end{minipage}\hspace{1cm}\begin{minipage}{5.0cm}
+Integral de superfície
+\begin{itemize}
+ \item [(\ \ )] $\iint_S\vec{F}\cdot \vec{n}dS =  0$%esta
+ \item [(\ \ )] $\iint_S\vec{F}\cdot \vec{n}dS =  4$
+ \item [(\ \ )] $\iint_S\vec{F}\cdot \vec{n}dS =  8$
+ \item [(\ \ )] $\iint_S\vec{F}\cdot \vec{n}dS =  16$
+ \item [(\ \ )] $\iint_S\vec{F}\cdot \vec{n}dS =  24$
+   \end{itemize}\end{minipage}
+
+
+\noindent\begin{minipage}[l]{270pt}$\bullet$ {\bf Questão 4} (0.5 ponto cada item)  A figura ao lado apresenta o corte $z=0$ de um campo $\vec{F}(x,y)=F_1(x,y)\vec{i}$ e as seguintes quatro curvas orientadas: $C_1$ é um círculo, $C_2$ é um segmento de reta, $C_3$ é uma elipse e $C_4$ é a união de dois segmentos de reta. Considere também a esfera $S_1$ centrada na origem, raio $2$ e orientada para fora e o plano $S_2$ dado por $x=0$, $-2\leq y\leq 2$, $-2\leq z\leq 2$, orientado no sentido de $\vec{i}$.
+
+Marque a resposta correta para cada coluna.
+
+\vspace{5mm}         
+
+ \noindent\begin{minipage}{4.3cm}
+ Integral de linha:
+ \begin{itemize}
+ \item [(\ \ )] $\int_{C_1}\vec{F}\cdot d\vec{r}>0$ 
+  \item [(\ \ )] $\int_{C_2}\vec{F}\cdot d\vec{r}=0$
+   \item [(\ \ )] $\int_{C_4}\vec{F}\cdot d\vec{r}=0$
+  \item [(\ \ )] $\int_{C_3}\vec{F}\cdot d\vec{r}<0$%esta
+     \item [(\ \ )] $\int_{C_3}\vec{F}\cdot d\vec{r}>\int_{C_2}\vec{F}\cdot d\vec{r}$
+  \end{itemize}\end{minipage}\begin{minipage}{5.5cm}
+ Integral de Superfície:
+   \begin{itemize}
+   \item [(\ \ )] $\iint_{S_1}\vec{F}\cdot\vec{n}dS=\iint_{S_2}\vec{F}\cdot\vec{n}dS=0$ 
+  \item [(\ \ )] $\iint_{S_1}\vec{F}\cdot\vec{n}dS>\iint_{S_2}\vec{F}\cdot\vec{n}dS>0$
+  \item [(\ \ )] $\iint_{S_1}\vec{F}\cdot\vec{n}dS<0$ %esta
+   \item [(\ \ )] $\iint_{S_2}\vec{F}\cdot\vec{n}dS<0$ 
+  \item [(\ \ )] $\iint_{S_1}\vec{F}\cdot\vec{n}dS>\iint_{S_2}\vec{F}\cdot\vec{n}dS=0$
+
+  \end{itemize}\end{minipage}
+ \end{minipage}\begin{minipage}[cl]{230pt}
+ \includegraphics[width=230pt]{pics/campo.eps}
+  \end{minipage}
+  
+  \vspace{2mm}         
+                                                                                                                                                                              
+ \noindent\begin{minipage}{7.0cm}
+ Curvatura:
+ \begin{itemize}
+ \item [(\ \ )] A curvatura é uma constante para cada curva.
+\item [(\ \ )]  A curvatura é zero para $C_1$ e $C_2$.
+\item [(\ \ )] A curvatura não é constante para $C_1$ e $C_3$
+\item [(\ \ )] Os pontos de maior e menor curvatura estão sobre a curva $C_3$ %esta
+\item [(\ \ )] A curvatura sobre $C_2$ cresce da esquerda para direita.
+   \end{itemize}\end{minipage}\hspace{1cm}\begin{minipage}{7.0cm}
+Rotacional:
+\begin{itemize}
+ \item [(\ \ )] $\nabla \times \vec{F} \cdot \vec{k}>0$ em todos os pontos. 
+\item [(\ \ )] $\nabla \times \vec{F} \cdot \vec{k}<0$ em todos os pontos. %esta
+\item [(\ \ )] $\nabla \times \vec{F} \cdot \vec{k}=0$ em todos os pontos.
+\item [(\ \ )] $\nabla \times \vec{F} \cdot \vec{i}>0$ em todos os pontos
+\item [(\ \ )] $\nabla \times \vec{F} \cdot \vec{j}>0$ em todos os pontos
+\end{itemize}\end{minipage}
+
+
+
+
+
+  
+\vspace{5mm}         
+
+  
+  
+  
+   \noindent $\bullet$ {\bf Questão 5} (1.0 ponto) Sejam $a_N$ e $a_T$ indicam as acelerações normal e tangencial, respectivamente. Prove algebricamente a expressão dada por:
+   $$\|\vec{a}\|^2=a_N^2+a_T^2$$
+   onde $\vec{a}$ é o vetor aceleração. Faça uma interpretação geométrica.
+
+   
+\newpage   
+   \noindent $\bullet$ {\bf Questão 6} (3.0 pontos) Considere o campo vetorial $\vec{F}=xz\vec{i}+x\vec{j}+\frac{y^2}{2}\vec{k}$, a superfície $S_1$ formada pelo parabolóide $z=1-x^2-y^2$, $z\geq 0$ e a superfície $S_2$ formada pelo cone $z=1-\sqrt{x^2+y^2}$, $0\leq z\leq 1$, ambas orientada no sentido positivo do eixo $z$.
+   \begin{itemize}
+    \item[a)](1.5) Calcule as seguintes integrais de superfície:
+    $$
+    \iint_{S_1}\left(\vec{\nabla}\times \vec{F}\right) \cdot \vec{n}dS
+    $$
+    e
+    $$
+    \iint_{S_2}\left(\vec{\nabla}\times \vec{F}\right) \cdot \vec{n}dS.
+    $$
+    convertendo-as em integrais duplas iteradas (sem usar o teoremas de Stokes).
+    \item[b)](1.0) Use o teorema de Stokes para justificar o resultado do item a). 
+    
+    
+    \item[c)](0.5) Usando o resultado do item a) e o teorema do Stokes, é possível calcular o valor da integral 
+    $$
+    \iint_{D}\left(\vec{\nabla}\times \vec{F}\right) \cdot \vec{n}dS.
+    $$
+    onde $D$ é disco unitário no plano $xy$ dado por $z=0$, $x^2+y^2\leq 1$?
+    \end{itemize}
+   
+   
+        
+  
+   
+   \end{document}
+   
+   \begin{eqnarray*}
+    \left\|\vec{r}\!~'(t)\right\|&=&\sqrt{\sin^2(t)+\cos^2(t)+e^{2t}}=\sqrt{1+e^{2t}}
+   \end{eqnarray*}
+
+   
+   \begin{eqnarray*}\vec{r}\!~'(t)\times \vec{r}\!~''(t)&=&\left|\begin{array}{ccc}
+\vec{i}&\vec{j}&\vec{k}\\
+-\sin(t) & \cos(t) &e^t\\
+-\cos(t) & -\sin(t) &e^t
+\end{array}\right|\\
+&=&e^t\left[\cos(t)+\sin(t)\right]\vec{i}
++e^t\left[-\cos(t)+\sin(t)\right]\vec{j}+\left[\cos^2(t)+\sin^2(t)\right]\vec{k}\\
+&=&e^t\left[\cos(t)+\sin(t)\right]\vec{i}
++e^t\left[-\cos(t)+\sin(t)\right]\vec{j}+\vec{k}
+\end{eqnarray*}
+
+\begin{eqnarray*}\left\|\vec{r}\!~'(t)\times \vec{r}\!~''(t)\right\|&=&\sqrt{e^{2t}\left[\cos(t)+\sin(t)\right]^2
++e^{2t}\left[-\cos(t)+\sin(t)\right]^2+1}\\
+&=&\sqrt{2e^{2t}\left[\cos^2(t)+\sin^2(t)\right]+1}\\
+&=&\sqrt{2e^{2t}+1}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}\vec{r}\!~'(t)\times \vec{r}\!~''(t)\cdot \vec{r}\!~'''(t)&=&e^t\left[\cos(t)+\sin(t)\right]\sin(t)
+-e^t\left[-\cos(t)+\sin(t)\right]\cos(t)+e^{t}\\
+&=&e^t\left[\cos(t)\sin(t)+\sin^2(t)\right]
+-e^t\left[-\cos^2(t)+\sin(t)\cos(t)\right]+e^{t}\\
+&=&2e^t\\
+\end{eqnarray*}
+
+

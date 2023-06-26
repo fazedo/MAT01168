@@ -1,0 +1,331 @@
+\documentclass[10pt,a4paper]{article}%
+\usepackage{amsmath,amsfonts,amstext,amsthm,multicol}%
+ \usepackage{tabu}
+\pagestyle{empty}%
+\usepackage{graphicx, graphics}
+\setlength{\topmargin}{-2.5cm} \setlength{\oddsidemargin}{-1cm} %%% top margin -3
+\setlength{\evensidemargin}{1cm} \setlength{\textheight}{27cm}
+\setlength{\textwidth}{18cm}
+
+
+\renewcommand{\sin}{\operatorname{sen}}
+\renewcommand{\sinh}{\operatorname{senh}}
+
+\everymath{\displaystyle}
+\begin{document}
+
+\noindent
+\begin{minipage}[l]{11.4cm}
+
+     {\bf UFRGS -- INSTITUTO DE MATEMÁTICA E ESTATÍSTICA}
+
+    {\bf Departamento de Matemática Pura e Aplicada}
+  
+   {\bf MAT01168}
+
+    {\bf Prova da área IIA}
+\end{minipage}\hfill\begin{minipage}{5.75cm}
+    \begin{tabular}{|c|c|c|c|}  \hline
+        {\bf } & {\bf }& {\bf }&   {\bf }\!\! \\
+        \hline
+         \hline \hspace{1cm} & \hspace{1cm}   & \hspace{1cm}  & \hspace{1cm} \\
+        &&& \\
+
+        &&& \\
+        \hline
+    \end{tabular}
+\end{minipage}
+
+\vspace{0.2cm} \noindent \rule {\textwidth}{0.05cm}
+
+\linespread{1.0}
+
+\vspace{0,2cm} {\normalsize \noindent {\bf Nome:} \underline
+{\hspace{9.6cm}}\hfill {\bf Cartão:} \underline {\hspace{3.0cm}}\hfill {\bf Turma:}\underline {\hspace{8pt}\hspace{8pt}}}
+
+\large
+%%%%%%%%%%%%%%% questão 1
+\vspace{.5cm}
+\noindent\begin{minipage}[l]{11cm}
+{\footnotesize 
+Regras Gerais:
+\begin{itemize}
+\item Não é permitido o uso de calculadoras, telefones ou qualquer outro recurso computacional ou de comunicação.
+\item Trabalhe individualmente e sem uso de material de consulta além do fornecido.
+\item Devolva o caderno de questões preenchido ao final da prova.
+\end{itemize}
+Regras para as questões abertas:
+\begin{itemize}
+\item Seja sucinto, completo e claro.
+\item Justifique todo procedimento usado. 
+\item Indique identidades matemáticas usadas, em especial, itens da tabela.
+\item Use notação matemática consistente.
+\end{itemize}
+\vspace{5pt}
+}
+\end{minipage}\hfill\begin{minipage}{6.5cm}
+{\footnotesize 
+Identidades:
+
+{\tabulinesep=1.2mm
+\begin{tabu}{|c|c|} 
+\hline
+ $\sin(x)=\frac{e^{ix}-e^{-ix}}{2i}$ & $\cos(x)=\frac{e^{ix}+e^{-ix}}{2}$\\ 
+\hline
+ $\sinh(x)=\frac{e^{x}-e^{-x}}{2}$ & $\cosh(x)=\frac{e^{x}+e^{-x}}{2}$\\ 
+\hline
+\multicolumn{2}{|c|}{$(a+b)^n=\sum_{j=0}^\infty { n\choose j} a^{n-j}b^j, \quad {n\choose j}=\frac{n!}{j!(n-j)!}$}\\ 
+\hline
+ \multicolumn{2}{|c|}{$\sin(x+y)=\sin(x)\cos(y)+\sin(y)\cos(x)$}\\
+ \hline
+ \multicolumn{2}{|c|}{$\cos(x+y)=\cos(x)\cos(y)-\sin(x)\sin(y)$}\\ 
+\hline
+\end{tabu}}
+
+
+}
+\end{minipage}
+
+\vspace{15pt}
+
+\noindent\begin{minipage}[l]{8.6cm}
+{\footnotesize 
+Propriedades:
+
+{\tabulinesep=0.8mm
+\begin{tabu}{|c|c|c|}
+\hline
+1& Linearidade &$\displaystyle \mathcal{L}\left\{\alpha f(t)+\beta g(t)\right\}=\alpha\mathcal{L}\left\{ f(t)\right\}+\beta\mathcal{L}\left\{g(t)\right\}$ \\ 
+\hline
+2& \begin{tabu}{c}Transformada \\da derivada\end{tabu} &\begin{tabu}{l}$\displaystyle \mathcal{L}\left\{f'(t)\right\}=s\mathcal{L}\left\{f(t)\right\}-f(0)$\\$\displaystyle \mathcal{L}\left\{f''(t)\right\}=s^2\mathcal{L}\left\{f(t)\right\}-sf(0)-f'(0)$ \end{tabu}\\ 
+\hline
+3& \begin{tabu}{c}Deslocamento \\no eixo $s$ \end{tabu}&$\displaystyle \mathcal{L}\left\{e^{at}f(t)\right\}=F(s-a)$ \\ 
+\hline
+4& \begin{tabu}{c}Deslocamento \\no eixo $t$ \end{tabu}&\begin{tabu}{l}$\displaystyle \mathcal{L}\left\{u(t-a)f(t-a)\right\}=e^{-as}F(s) $\\ $\displaystyle \mathcal{L}\left\{u(t-a)\right\}=\frac{e^{-as}}{s} $\end{tabu}  \\ 
+\hline
+5& \begin{tabu}{c}Transformada \\da integral \end{tabu}&$\displaystyle \mathcal{L}\left\{\int_0^t f(\tau)d\tau\right\}=\frac{F(s)}{s} $ \\ 
+\hline
+6& \begin{tabu}{c} Filtragem da \\Delta de Dirac \end{tabu}&$\displaystyle \int_{-\infty}^{\infty}f(t)\delta(t-a)dt=f(a) $ \\ 
+\hline
+7& \begin{tabu}{c}Transformada da \\Delta de Dirac \end{tabu}&$\displaystyle \mathcal{L}\left\{\delta(t-a)\right\}=e^{-as} $ \\ 
+\hline
+8& \begin{tabu}{c}Teorema da \\Convolução \end{tabu}&\begin{tabu}{l}$\displaystyle \mathcal{L}\left\{(f*g)(t)\right\}=F(s)G(s), $ \\onde \quad $\displaystyle (f*g)(t)=\int_0^tf(\tau)g(t-\tau)d\tau $\end{tabu} \\ 
+\hline
+9& \begin{tabu}{c}Transformada de \\funções periódicas\end{tabu}&$\displaystyle \mathcal{L}\left\{f(t)\right\}=\frac{1}{1-e^{-sT}}\int_0^Te^{-s\tau}f(\tau)d\tau $ \\ 
+\hline
+10& \begin{tabu}{c}Derivada da \\transformada \end{tabu}&$\displaystyle \mathcal{L}\left\{tf(t)\right\}=-\frac{dF(s)}{ds} $ \\ 
+\hline
+11& \begin{tabu}{c}Integral da \\transformada \end{tabu}&$\displaystyle \mathcal{L}\left\{\frac{f(t)}{t}\right\}=\int_s^\infty F(\hat{s})d\hat{s} $ \\ 
+\hline
+\end{tabu}}
+
+}
+\end{minipage}\hfill\begin{minipage}[r]{7.8cm}
+{\footnotesize 
+Séries:
+
+{\tabulinesep=1.2mm
+\begin{tabu}{|l|} 
+\hline
+ $\displaystyle \frac{1}{1-x}=\sum_{n=0}^\infty x^n=1+x+x^2+x^3\cdots,$ \quad$\displaystyle -1<x<1$ \\ 
+\hline
+ $\displaystyle \frac{x}{(1-x)^2}=\sum_{n=1}^\infty n x^n=x+2x^2+3x^3+\cdots,$ \ $\displaystyle -1<x<1$ \\ 
+\hline
+ $\displaystyle e^x=\sum_{n=0}^\infty \frac{x^n}{n!}=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots,$  \quad$\displaystyle -\infty<x<\infty$ \\ 
+\hline
+ $\displaystyle \ln(1+x)=\sum_{n=0}^\infty(-1)^n \frac{x^{n+1}}{n+1},$  \quad$\displaystyle -1<x<1$ \\ 
+\hline
+ $\displaystyle \arctan(x)=\sum_{n=0}^\infty(-1)^n \frac{x^{2n+1}}{2n+1},$  \quad$\displaystyle -1<x<1$ \\ 
+\hline
+ $\displaystyle \sin(x)=\sum_{n=0}^\infty(-1)^n \frac{x^{2n+1}}{(2n+1)!},$  \quad$\displaystyle -\infty<x<\infty$ \\ 
+\hline
+ $\displaystyle \cos(x)=\sum_{n=0}^\infty(-1)^n \frac{x^{2n}}{(2n)!},$  \quad$\displaystyle -\infty<x<\infty$ \\ 
+\hline
+ $\displaystyle \sinh(x)=\sum_{n=0}^\infty \frac{x^{2n+1}}{(2n+1)!},$  \quad$\displaystyle -\infty<x<\infty$ \\ 
+\hline
+ $\displaystyle \cosh(x)=\sum_{n=0}^\infty \frac{x^{2n}}{(2n)!},$  \quad$\displaystyle -\infty<x<\infty$ \\ 
+\hline
+\begin{tabu}{r} $\displaystyle (1+x)^m=1+\sum_{n=1}^\infty \frac{m(m-1)\cdots (m-n+1)}{n!}x^n,$ \\$\displaystyle -1<x<1$, $m\neq 0,1,2,...$ \end{tabu}\\ 
+\hline
+\end{tabu}}
+
+
+}
+\end{minipage}
+
+\vspace{15pt}
+
+\noindent\begin{minipage}[l]{10.2cm}
+{\footnotesize 
+Funções especiais:
+
+{\tabulinesep=1.2mm
+\begin{tabu}{|c|c|} 
+\hline
+Função Gamma& $\displaystyle \Gamma(k)=\int_0^\infty x^{k-1}e^{-x}dx$ \\ 
+\hline
+\begin{tabular}{c}Propriedade da \\ Função Gamma\end{tabular}& $\displaystyle \begin{array}{ll}\Gamma(k+1)=k\Gamma(k),&k>0\\\Gamma(n+1)=n!,&n\in\mathbb{N}\end{array}$ \\ 
+\hline
+\begin{tabular}{c}Função de Bessel\\modificada de ordem $\nu$\end{tabular}&\ \ $\displaystyle I_\nu(x)=\sum_{m=0}^\infty \frac{1}{m!\Gamma(m+\nu+1)}\left(\frac{x}{2}\right)^{2m+\nu}$ \\ 
+\hline
+\begin{tabular}{c}Função de Bessel\\de ordem $0$\end{tabular}&\ \ $\displaystyle J_0(x)=\sum_{m=0}^\infty \frac{(-1)^m}{m!^2}\left(\frac{x}{2}\right)^{2m}$ \\ 
+\hline
+\begin{tabular}{c}Integral seno\end{tabular}&\ \ $\displaystyle 	\hbox{Si}\ \!(t)=\int_0^t\frac{\sin(x)}{x}dx$ \\ 
+\hline
+\end{tabu}}
+}
+\end{minipage}\hfill\begin{minipage}[r]{6.5cm}
+{\footnotesize 
+Integrais:
+
+{\tabulinesep=1.2mm
+\begin{tabu}{|c|}
+\hline
+$\int xe^{\lambda x}\; \mathrm{d}x = \frac{e^{ \lambda x}}{\lambda^2}(\lambda x-1)+C$\\\hline
+ $\int x^2 e^{\lambda x}\;\mathrm{d}x = e^{\lambda x}\left(\frac{x^2}{\lambda}-\frac{2x}{\lambda^2}+\frac{2}{\lambda^3}\right)+C$\\\hline
+ $\int x^n e^{\lambda x}\; \mathrm{d}x = \frac{1}{\lambda} x^n e^{\lambda x} - \frac{n}{\lambda}\int x^{n-1} e^{\lambda x} \mathrm{d}x+C $\\\hline
+ $\int \!x\cos \left( \lambda\,x \right) {dx}={\frac {\cos \left( 
+\lambda\,x \right) +\lambda x\sin \left( \lambda\,x \right) }{{\lambda}
+^{2}}}+C$\\\hline
+ $\int \!x\sin \left( \lambda\,x \right) {dx}={\frac {\sin \left( 
+\lambda\,x \right) -\lambda x\cos \left( \lambda\,x \right) }{{\lambda}
+^{2}}}+C$\\\hline
+ $\int \!e^{\lambda x}\sin \left( w\,x \right) {dx}={\frac {{{\rm e}^{\lambda\,x}} \left( \lambda\,\sin \left( wx \right) 
+-w\cos \left( wx \right)  \right) }{{\lambda}^{2}+{w}^{2}}}
+$
+ \\\hline
+\end{tabu}}
+}
+
+\end{minipage}
+
+
+\newpage
+
+\noindent\begin{minipage}[l]{7cm}
+{\footnotesize 
+Tabela de transformadas de Laplace:
+
+{\tabulinesep=0.8mm
+\begin{tabu}{|c|c|c|}
+\hline
+&$\displaystyle F(s)=\mathcal{L }\{f(t)\} $&$\displaystyle  f(t)=\mathcal{L }^{-1}\{F(s)\}$ \\
+\hline 
+1&  $\displaystyle \frac{1}{s} $ & $\displaystyle  1$ \\ 
+\hline 
+2& $\displaystyle \frac{1}{s^2} $&$\displaystyle  t$ \\ 
+\hline 
+3& $\displaystyle \frac{1}{s^n}, \qquad (n=1,2,3,...) $&$\displaystyle  \frac{t^{n-1}}{(n-1)!}$ \\
+\hline 
+4& $\displaystyle \frac{1}{\sqrt{s}}, $&$\displaystyle  \frac{1}{\sqrt{\pi t}}$ \\ 
+\hline 
+5& $\displaystyle \frac{1}{s^{\frac{3}{2}}}, $&$\displaystyle  2\sqrt{\frac{t}{\pi}}$ \\ 
+\hline 
+6& $\displaystyle \frac{1}{s^{k}},\qquad (k>0)  $&$\displaystyle  \frac{t^{k-1}}{\Gamma(k)}$ \\ 
+\hline 
+7& $\displaystyle \frac{1}{s-a} $&$\displaystyle  e^{ at}$ \\ 
+\hline 
+8& $\displaystyle \frac{1}{(s-a)^2} $&$\displaystyle  te^{at}$ \\ 
+\hline 
+9& $\displaystyle \frac{1}{(s-a)^n},\qquad (n=1,2,3...) $&$\displaystyle  \frac{1}{(n-1)!}t^{n-1}e^{at}$ \\ 
+\hline
+10& $\displaystyle \frac{1}{(s-a)^k},\qquad (k>0) $&$\displaystyle  \frac{1}{\Gamma(k)}t^{k-1}e^{at}$ \\ 
+\hline 
+11& $\displaystyle \frac{1}{(s-a)(s-b)},\qquad (a\neq b) $&$\displaystyle  \frac{1}{a-b}\left(e^{at}-e^{bt}\right)$ \\ 
+\hline 
+12& $\displaystyle \frac{s}{(s-a)(s-b)},\qquad (a\neq b) $&$\displaystyle  \frac{1}{a-b}\left(ae^{at}-be^{bt}\right)$ \\ 
+\hline 
+13& $\displaystyle \frac{1}{s^2+w^2} $&$\displaystyle  \frac{1}{w}\sin(wt)$ \\ 
+\hline 
+14& $\displaystyle \frac{s}{s^2+w^2} $&$\displaystyle  \cos(wt)$ \\ 
+\hline 
+15& $\displaystyle \frac{1}{s^2-a^2} $&$\displaystyle   \frac{1}{a}\sinh(at)$ \\ 
+\hline 
+16& $\displaystyle \frac{s}{s^2-a^2} $&$\displaystyle  \cosh(at)$ \\ 
+\hline 
+17& $\displaystyle \frac{1}{(s-a)^2+w^2} $&$\displaystyle  \frac{1}{w}e^{at}\sin(wt)$ \\ 
+\hline 
+18& $\displaystyle \frac{s-a}{(s-a)^2+w^2} $&$\displaystyle  e^{at}\cos(wt)$ \\ 
+\hline
+19& $\displaystyle \frac{1}{s(s^2+w^2)} $&$\displaystyle  \frac{1}{w^2}(1-\cos(wt))$ \\ 
+\hline
+20& $\displaystyle \frac{1}{s^2(s^2+w^2)} $&$\displaystyle  \frac{1}{w^3}(wt-\sin(wt))$ \\ 
+\hline
+21& $\displaystyle \frac{1}{(s^2+w^2)^2} $&$\displaystyle  \frac{1}{2w^3}(\sin(wt)-wt\cos(wt))$ \\ 
+\hline
+22& $\displaystyle \frac{s}{(s^2+w^2)^2} $&$\displaystyle  \frac{t}{2w}\sin(wt)$ \\ 
+\hline
+23& $\displaystyle \frac{s^2}{(s^2+w^2)^2} $&$\displaystyle  \frac{1}{2w}(\sin(wt)+wt\cos(wt))$ \\ 
+\hline
+24& $\displaystyle \begin{array}{l}\frac{s}{(s^2+a^2)(s^2+b^2)},\\\\ \hspace{2.0cm} (a^2\neq b^2) \end{array}$&$\displaystyle  \frac{1}{b^2-a^2}(\cos(at)-\cos(bt))$ \\ 
+\hline
+25& $\displaystyle \frac{1}{(s^4+4a^4)}$&\begin{tabu}{r}$\displaystyle  \frac{1}{4a^3}[\sin(at)\cosh(at)-$\\$\displaystyle  -\cos(at)\sinh(at)]$\end{tabu} \\ 
+\hline
+26& $\displaystyle \frac{s}{(s^4+4a^4)} $&$\displaystyle  \frac{1}{2a^2}\sin(at)\sinh(at))$ \\ 
+\hline
+27& $\displaystyle \frac{1}{(s^4-a^4)} $&$\displaystyle  \frac{1}{2a^3}(\sinh(at)-\sin(at))$ \\ 
+\hline
+28&$\displaystyle \frac{s}{(s^4-a^4)} $&$\displaystyle  \frac{1}{2a^2}(\cosh(at)-\cos(at))$ \\ 
+\hline
+
+\end{tabu}}
+
+
+
+}
+\end{minipage}\hfill\begin{minipage}{9cm}
+{\footnotesize 
+
+{\tabulinesep=0.8mm
+\begin{tabu}{|c|c|c|}
+\hline
+&$\displaystyle F(s)=\mathcal{L }\{f(t)\} $&$\displaystyle  f(t)=\mathcal{L }^{-1}\{F(s)\}$ \\
+\hline
+29& $\displaystyle \sqrt{s-a}-\sqrt{s-b} $&$ \displaystyle  \frac{1}{2\sqrt{\pi t^3}}(e^{bt}-e^{at})$ \\ 
+\hline
+30& $\displaystyle \frac{1}{\sqrt{s+a}\sqrt{s+b}} $&$\displaystyle  e^{\frac{-(a+b)t}{2}}I_0\left(\frac{a-b}{2}t\right)$ \\ 
+\hline
+31& $\displaystyle \frac{1}{\sqrt{s^2+a^2}} $&$\displaystyle  J_0(at)$ \\ 
+\hline
+32& $\displaystyle \frac{s}{(s-a)^{\frac{3}{2}}} $&$\displaystyle  \frac{1}{\sqrt{\pi t}}e^{at}(1+2at)$ \\ 
+\hline
+33& $\displaystyle \frac{1}{(s^2-a^2)^k},\qquad (k>0) $&$\displaystyle  \frac{\sqrt{\pi}}{\Gamma(k)}\left(\frac{t}{2a}\right)^{k-\frac{1}{2}}I_{k-\frac{1}{2}}(at)$ \\ 
+\hline
+34& $\displaystyle \frac{1}{s}e^{-\frac{k}{s}},\qquad (k>0)$&$\displaystyle  J_0(2\sqrt{kt})$ \\ 
+\hline
+35& $\displaystyle \frac{1}{\sqrt{s}}e^{-\frac{k}{s}} $&$\displaystyle  \frac{1}{\sqrt{\pi t}}\cos(2\sqrt{k t})$ \\ 
+\hline
+36& $\displaystyle \frac{1}{s^{\frac{3}{2}}}e^{\frac{k}{s}}$&$\displaystyle  \frac{1}{\sqrt{\pi t}}\sinh(2\sqrt{k t})$ \\ 
+\hline
+37& $\displaystyle e^{-k\sqrt{s}},\qquad (k>0) $&$\displaystyle  \frac{k}{2\sqrt{\pi t^3}}e^{-\frac{k^2}{4t}}$ \\ 
+\hline
+38& $\displaystyle \frac{1}{s}\ln(s)$&$\displaystyle  -\ln(t)-\gamma,\qquad (\gamma\approx 0,5772) $  \\ 
+\hline
+39& $\displaystyle \ln\left(\frac{s-a}{s-b}\right) $&$\displaystyle  \frac{1}{t}\left(e^{bt}-e^{at}\right)$ \\ 
+\hline
+40& $\displaystyle \ln\left(\frac{s^2+w^2}{s^2}\right) $&$\displaystyle  \frac{2}{t}\left(1-\cos(wt)\right)$ \\ 
+\hline
+41& $\displaystyle \ln\left(\frac{s^2-a^2}{s^2}\right)$&$\displaystyle  \frac{2}{t}\left(1-\cosh(at)\right)$ \\ 
+\hline
+42& $\displaystyle \tan^{-1}\left(\frac{w}{s}\right)$&$\displaystyle  \frac{1}{t}\sin(wt)$ \\ 
+\hline
+43& $\displaystyle \frac{1}{s}\cot^{-1}(s) $&$\displaystyle  \hbox{Si}\ \!(t)$ \\ 
+\hline
+44&$\displaystyle \frac{1}{s}\tanh\left(\frac{as}{2}\right) $ & $\displaystyle\begin{array}{l}\hbox{Onda quadrada}\\\\  f(t)=\left\{\begin{array}{ll} 1,& 0<t<a \\-1,&a<t<2a \end{array}\right.\\ \\ f(t+2a)=f(t),\ \ t>0 \end{array}$\\ 
+\hline 
+45&$\displaystyle \frac{1}{as^2}\tanh\left(\frac{as}{2}\right) $&$\displaystyle\begin{array}{l}\hbox{Onda triangular}\\\\  f(t)=\left\{\begin{array}{ll} \frac{t}{a},& 0<t<a \\-\frac{t}{a}+2,&a<t<2a \end{array}\right.\\ \\ f(t+2a)=f(t),\ \ t>0 \end{array}$\\ 
+\hline 
+46&$\displaystyle \frac{w}{(s^2+w^2)\left(1-e^{-\frac{\pi}{w}s}\right)} $&$\displaystyle\begin{array}{l}\hbox{Retificador de meia onda} \\\\  f(t)=\left\{\begin{array}{l} \sin(wt),\ \ 0<t<\frac{\pi}{w} \\  \\ 0,\qquad\ \frac{\pi}{w}<t<\frac{2\pi}{w} \end{array}\right.\\\\ f\left(t+\frac{2\pi}{w}\right)=f(t),\ \ t>0 \end{array}$\\ 
+\hline 
+47&$\displaystyle \frac{w}{s^2+w^2}\coth\left(\frac{\pi s}{2w}\right) $&$\displaystyle\begin{array}{l}\hbox{Retificador de onda completa}\\\\  f(t)=|\sin(wt)|\end{array}$\\ 
+\hline 
+48&$\displaystyle \frac{1}{as^2}-\frac{e^{-as}}{s\left(1-e^{-as}\right)} $&$\displaystyle\begin{array}{l}\hbox{Onda dente de serra}\\\\  f(t)= \frac{t}{a},\qquad  0<t<a \\ \\f(t)=f(t-a),\ \ t>a \end{array}$\\ 
+\hline 
+\end{tabu}}
+
+
+}
+\end{minipage}
+
+
+\end{document}

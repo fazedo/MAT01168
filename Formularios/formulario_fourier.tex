@@ -1,0 +1,201 @@
+\documentclass[10pt,a4paper]{article}%
+\usepackage{amsmath,amsfonts,amstext,amsthm,color}%
+
+\usepackage{graphicx}%
+\usepackage{tabu}
+
+
+
+\pagestyle{empty}%
+\setlength{\topmargin}{-2.5cm} \setlength{\oddsidemargin}{-1cm} %%% top margin -3
+\setlength{\evensidemargin}{1cm} \setlength{\textheight}{27cm}
+\setlength{\textwidth}{18cm}
+
+
+\renewcommand{\sin}{\operatorname{sen}}
+\renewcommand{\sinh}{\operatorname{senh}}
+
+\everymath{\displaystyle}
+\begin{document}
+
+\begin{minipage}[l]{11.4cm}
+
+     {\bf UFRGS -- INSTITUTO DE MATEMÁTICA E ESTATÍSTICA}
+
+    {\bf Departamento de Matemática Pura e Aplicada}
+  
+   {\bf MAT01168}
+
+    {\bf Prova da área IIA}
+\end{minipage}\hfill\begin{minipage}{5.75cm}
+    \begin{tabular}{|c|c|c|c|}  \hline
+        {\bf } & {\bf }& {\bf }&   {\bf }\!\! \\
+        \hline
+         \hline \hspace{1cm} & \hspace{1cm}   & \hspace{1cm}  & \hspace{1cm} \\
+        &&& \\
+
+        &&& \\
+        \hline
+    \end{tabular}
+\end{minipage}
+
+\vspace{0.2cm} \noindent \rule {17.9cm}{0.05cm}
+
+\linespread{0.5}
+
+\vspace{0,2cm} {\normalsize \noindent {\bf Nome:} \underline
+{\hspace{11.9cm}} {\bf Cartão:} \underline {\hspace{3.1cm}} 
+
+
+
+\large
+%%%%%%%%%%%%%%% questão 1
+\vspace{.5cm}
+
+\noindent {\footnotesize
+Regras Gerais:
+\begin{itemize}
+\item Não é permitido o uso de calculadoras, telefones ou qualquer outro recurso computacional ou de comunicação.
+\item Trabalhe individualmente e sem uso de material de consulta além do fornecido.
+\item Devolva o caderno de questões preenchido ao final da prova.
+\end{itemize}
+Regras para as questões abertas:
+\begin{itemize}
+\item Seja sucinto, completo e claro.
+\item Justifique todo procedimento usado. 
+\item Indique identidades matemáticas usadas, em especial, itens da tabela.
+\item Use notação matemática consistente.
+\end{itemize}
+\vspace{5pt}
+
+
+\noindent {\footnotesize Propriedades das transformadas de Fourier: considere a notação $F(w)=\mathcal{F}\{f(t)\}$.\\
+{\tabulinesep=1mm
+\begin{tabu}{|ll|c|}
+\hline
+1.& Linearidade &$\displaystyle \mathcal{F}\left\{\alpha f(t)+\beta g(t)\right\}=\alpha\mathcal{F}\left\{ f(t)\right\}+\beta\mathcal{F}\left\{g(t)\right\}$ \\ 
+\hline
+2.& Transformada da derivada&\begin{tabu}{lll}Se $\displaystyle \lim_{t\to\pm\infty}f(t)=0$, &então &$\displaystyle \mathcal{F}\left\{f'(t)\right\}=iw\mathcal{F}\left\{f(t)\right\}$\\Se $\displaystyle \lim_{t\to\pm\infty}f(t)=\lim_{t\to\pm\infty}f'(t)=0$, &então &$\displaystyle \mathcal{F}\left\{f''(t)\right\}=-w^2\mathcal{F}\left\{f(t)\right\}$ \end{tabu}\\ 
+\hline
+3.&Deslocamento no eixo $w$ &$\displaystyle \mathcal{F}\left\{e^{at}f(t)\right\}=F(w+ia)$ \\ 
+\hline
+4.&Deslocamento no eixo $t$ &$\displaystyle \mathcal{F}\left\{f(t-a)\right\}=e^{-iaw}F(w) $  \\ 
+\hline
+5.&Transformada da integral &Se $\displaystyle F(0)=0$, \qquad então \qquad $\displaystyle \mathcal{F}\left\{\int_{-\infty}^t f(\tau)d\tau\right\}=\frac{F(w)}{iw} $ \\ 
+\hline
+6.&Teorema da modulação &$\displaystyle \mathcal{F}\left\{f(t)\cos(w_0t)\right\}=\frac{1}{2}F(w-w_0) +\frac{1}{2}F(w+w_0) $ \\ 
+\hline
+7.&Teorema da Convolução&\begin{tabu}{lll}$\displaystyle \mathcal{F}\left\{(f*g)(t)\right\}=F(w)G(w)$, &onde  &$\displaystyle (f*g)(t)=\int_{-\infty}^\infty f(\tau)g(t-\tau)d\tau $ \\ $\displaystyle (F*G)(w)=2\pi \mathcal{F}\{f(t)g(t)\}$\end{tabu} \\ 
+\hline
+8.&Conjugação&$\displaystyle \overline{F(w)}=F(-w) $ \\ 
+\hline
+9.&Inversão temporal&$\displaystyle \mathcal{F}\{f(-t)\}=F(-w) $ \\ 
+\hline
+10.&Simetria ou dualidade&$\displaystyle f(-w)=\frac{1}{2\pi}\mathcal{F}\left\{F(t)\right\}$ \\ 
+\hline
+11.& Mudança de escala&$\displaystyle \mathcal{F}\left\{f(at)\right\}=\frac{1}{|a|}F\left(\frac{w}{a}\right), \qquad a\neq 0$ \\ 
+\hline
+12.& Teorema da Parseval & $\displaystyle \int_{-\infty}^\infty |f(t)|^2dt = \frac{1}{2\pi} \int_{-\infty}^\infty |F(w)|^2dw$\\
+\hline
+13.&\begin{tabu}{l}Teorema da Parseval\\para Série de Fourier\end{tabu}  & $\displaystyle \frac{1}{T}\int_0^T |f(t)|^2dt=\sum_{n=-\infty}^\infty |C_n|^2$\\ \hline
+\end{tabu}}
+
+\vspace{5pt}
+
+\noindent{\footnotesize Séries e transformadas de Fourier:\\
+{\tabulinesep=1.2mm
+\begin{tabu}{|c|c|c|} 
+\hline
+& Forma trigonométrica& Forma exponencial\\\hline
+\begin{tabu}{l}Série de Fourier\end{tabu}&\begin{tabu}{c}$\displaystyle f(t)=\frac{a_0}{2}+ \sum_{n=1}^N \left[a_n \cos(w_n t) + b_n \sin(w_nt)\right] $\\ onde $w_n=\frac{2\pi n}{T}$, \ \ \  $T$ é o período de $f(t)$ \\    $a_0= \frac{2}{T}\int_0^T f(t)dt = \frac{2}{T}\int_{-T/2}^{T/2} f(t)dt,$\\
+   $a_n= \frac{2}{T}\int_0^Tf(t) \cos(w_n t)dt = \frac{2}{T}\int_{-T/2}^{T/2} f(t)\cos(w_nt)dt,$\\
+   $b_n= \frac{2}{T}\int_0^T f(t)\sin(w_n t)dt = \frac{2}{T}\int_{-T/2}^{T/2} f(t)\sin(w_nt)dt$  \end{tabu}&\begin{tabu}{c}$ f(t)=\sum_{n=-\infty}^\infty C_n e^{iw_nt},$  \\onde $C_n = \frac{a_n - ib_n}{2}$\end{tabu} \\ \hline
+\begin{tabu}{l}Transformada\\ de Fourier\end{tabu}&\begin{tabu}{c}$f(t)=\frac{1}{\pi}\int_{0}^\infty\left( A(w)\cos(wt)+ B(w)\sin(wt)\right)dw $,\ para $f(t)$ real,\\onde  $A(w)=\int_{-\infty}^\infty f(t)\cos(wt)dt$ e $B(w)=\int_{-\infty}^\infty f(t)\sin(wt) dt$\end{tabu}&\begin{tabu}{c}$f(t)=\frac{1}{2\pi}\int_{-\infty}^\infty F(w) e^{iwt}dw,$\\onde $F(w)=\int_{-\infty}^\infty f(t)e^{-iwt}dt$\end{tabu}\\ \hline
+\end{tabu}}
+}
+
+
+\newpage
+
+{\footnotesize 
+Tabela de integrais definidas:
+
+
+
+\noindent{\tabulinesep=1.1mm \begin{tabu}{|ll|ll|}
+\hline 
+1.&$\displaystyle  \int_0^\infty e^{-ax}\cos(mx)dx=\frac{a}{a^2+m^2}\qquad (a>0) $&2.& $\displaystyle  \int_0^\infty e^{-ax}\sin(mx)dx=\frac{m}{a^2+m^2}\qquad (a>0) $ \\ \hline
+3.&$\displaystyle  \int_0^\infty \frac{\cos(mx)}{a^2+x^2}dx=\frac{\pi}{2a}e^{-ma}\qquad (a>0,\ m\geq 0) $&4.& $\displaystyle  \int_0^\infty \frac{x\sin(mx)}{a^2+x^2}dx=\frac{\pi}{2}e^{-ma}\qquad (a\geq0,\ m> 0) $ \\ \hline
+5.&$\displaystyle  \int_0^\infty \frac{\sin(mx)\cos(nx)}{x}dx=\left\{\begin{array}{l}\frac{\pi }{2},\ \ n<m\\\\\frac{\pi }{4},\ \ n=m,\ \begin{array}{c} \!\!(m>0,\\ \ n>0)\end{array}\\\\ 0,\ \ n>m \end{array}\right. $& 6.&$\displaystyle  \int_0^\infty \frac{\sin(mx)}{x}dx=\left\{\begin{array}{l}\frac{\pi }{2},\ \ m>0\\\\ 0,\ \ m=0\\\\-\frac{\pi }{2},\ \ m<0 \end{array}\right. $ \\ \hline
+7.&$\displaystyle  \int_0^\infty e^{-r^2x^2}dx=\frac{\sqrt{\pi}}{2r}\qquad (r>0) $&8.& $\displaystyle  \int_0^\infty e^{-a^2x^2}\cos(mx)dx=\frac{\sqrt{\pi}}{2a}e^{-\frac{m^2}{4a^2}}\qquad (a>0) $ \\ \hline
+9.&$\displaystyle  \int_0^\infty xe^{-ax}\sin(mx)dx=\frac{2am}{(a^2+m^2)^2}\qquad (a>0) $&10.&{\tabulinesep=1.1mm \begin{tabu}{l}$\displaystyle  \int_0^\infty e^{-ax}\sin(mx)\cos(nx)dx=$ \\\hspace{30pt}$\displaystyle=\frac{m(a^2+m^2-n^2)}{(a^2+(m-n)^2)(a^2+(m+n)^2)}\quad (a>0) $\end{tabu}} \\\hline
+11.&$\displaystyle  \int_0^\infty xe^{-ax}\cos(mx)dx=\frac{a^2-m^2}{(a^2+m^2)^2}\qquad (a>0) $&12.&$\displaystyle  \int_0^\infty \frac{\cos(mx)}{x^4+4a^4}dx=\frac{\pi}{8a^3}e^{-ma}(\sin(ma)+\cos(ma)) $ \\ \hline
+13.&$\displaystyle  \int_0^\infty \frac{\sin^2(mx)}{x^2}dx=|m|\frac{\pi}{2} $&14.& $\displaystyle  erf(x)=\frac{2}{\sqrt{\pi}}\int_0^x e^{-z^2}dz $ \\ \hline
+15.&$\displaystyle  \int_0^\infty \frac{\sin^2(ax)\sin(mx)}{x}dx=\left\{\begin{array}{l}\frac{\pi }{4},\ (0<m<2a)\\\\\frac{\pi }{8},\ (0<2a=m)\\\\ 0,\ (0<2a<m) \end{array}\right. $&16.& $\displaystyle \int_0^\infty \frac{\sin(mx)\sin(nx)}{x^2}dx=\left\{\begin{array}{l}\frac{\pi m}{2},\ (0<m\leq n)\\\\\frac{\pi n}{2},\ (0<n\leq m) \end{array}\right. $ \\ \hline
+17.&$\displaystyle  \int_0^\infty x^2e^{-ax}\sin(mx)dx=\frac{2m(3a^2-m^2)}{(a^2+m^2)^3}\qquad (a>0) $&18.& $\displaystyle \int_0^\infty x^2e^{-ax}\cos(mx)dx=\frac{2a(a^2-3m^2)}{(a^2+m^2)^3}\quad (a>0) $ \\ \hline
+19.&$\displaystyle  \int_0^\infty \frac{\cos(mx)}{(a^2+x^2)^2}dx=\frac{\pi}{4a^3}(1+ma)e^{-ma}\quad \begin{array}{l}\!\!(a>0,\\ \ m\geq 0)\end{array} $&20.& $\displaystyle  \int_0^\infty \frac{x\sin(mx)}{(a^2+x^2)^2}dx=\frac{\pi m}{4a}e^{-ma} \quad (a>0,\ m>0) $ \\ \hline
+21.&$\displaystyle  \int_0^\infty \frac{x^2\cos(mx)}{(a^2+x^2)^2}dx=\frac{\pi}{4a}(1-ma)e^{-ma}\quad \begin{array}{l}\!\!(a>0,\\ \ m\geq 0)\end{array} $&22.& $\displaystyle  \int_0^\infty xe^{-a^2x^2}\sin(mx)dx=\frac{ m \sqrt{\pi}}{4a^3}e^{-\frac{m^2}{4a^2}} \quad (a>0) $\\ \hline
+\end{tabu}
+
+\vspace{15pt}
+
+\noindent\begin{minipage}[l]{8.5cm}
+{\footnotesize 
+Frequências das notas musicais em hertz:
+
+ {\tabulinesep=1.1mm
+\begin{tabu}{|c|c|c|c|c|c|c|}
+\hline
+Nota  $\backslash$ Escala 	&	2&3	&4&5&6&7	\\ \hline
+D\'{o}	&	65,41	&	130,8	&	261,6	&	523,3	&	1047	&	2093	\\ \hline
+D\'{o} $\sharp$	&	69,30	&	138,6	&	277,2	&	554,4	&	1109	&	2217	\\ \hline
+R\'{e}	&	73,42	&	146,8	&	293,7	&	587,3	&	1175	&	2349	\\ \hline
+R\'{e} $\sharp$	&	77,78	&	155,6	&	311,1	&	622,3	&	1245	&	2489	\\ \hline
+Mi	&	82,41	&	164,8	&	329,6	&	659,3	&	1319	&	2637	\\ \hline
+F\'{a}	&	87,31	&	174,6	&	349,2	&	698,5	&	1397	&	2794	\\ \hline
+F\'{a} $\sharp$	&	92,50	&	185,0	&	370,0	&	740,0	&	1480	&	2960	\\ \hline
+Sol	&	98,00	&	196,0	&	392,0	&	784,0	&	1568	&	3136	\\ \hline
+Sol $\sharp$	&	103,8	&	207,7	&	415,3	&	830,6	&	1661	&	3322	\\ \hline
+L\'{a}	&	110,0	&	220,0	&	440,0	&	880,0	&	1760	&	3520	\\ \hline
+L\'{a} $\sharp$	&	116,5	&	233,1	&	466,2	&	932,3	&	1865	&	3729	\\ \hline
+Si	&	123,5	&	246,9	&	493,9	&	987,8	&	1976	&	3951	\\ \hline
+
+ \end{tabu}}
+}
+\end{minipage}\hfill\begin{minipage}[r]{8.0cm}
+{\footnotesize 
+Identidades Trigonométricas:
+
+{\tabulinesep=1.2mm
+\begin{tabu}{|c|} 
+\hline
+ $\cos(x) \cos(y) = \frac {\cos(x+y) + \cos(x-y)}{2}$\\\hline
+ $\sin(x) \sin(y) = \frac {\cos(x-y) - \cos(x+y)}{2}$\\\hline
+ $\sin(x) \cos(y) = \frac {\sin(x+y) + \sin(x-y)}{2}$\\\hline
+\end{tabu}}
+}
+
+\vspace{10pt}
+
+{\footnotesize 
+Integrais:
+
+{\tabulinesep=1.2mm
+\begin{tabu}{|c|}
+\hline
+$\int xe^{\lambda x}\; \mathrm{d}x = \frac{e^{ \lambda x}}{\lambda^2}(\lambda x-1)+C$\\\hline
+ $\int x^2 e^{\lambda x}\;\mathrm{d}x = e^{\lambda x}\left(\frac{x^2}{\lambda}-\frac{2x}{\lambda^2}+\frac{2}{\lambda^3}\right)+C$\\\hline
+ $\int x^n e^{\lambda x}\; \mathrm{d}x = \frac{1}{\lambda} x^n e^{\lambda x} - \frac{n}{\lambda}\int x^{n-1} e^{\lambda x} \mathrm{d}x+C $\\\hline
+ $\int \!x\cos \left( \lambda\,x \right) {dx}={\frac {\cos \left( 
+\lambda\,x \right) +\lambda x\sin \left( \lambda\,x \right) }{{\lambda}
+^{2}}}+C$\\\hline
+ $\int \!x\sin \left( \lambda\,x \right) {dx}={\frac {\sin \left( 
+\lambda\,x \right) -\lambda x\cos \left( \lambda\,x \right) }{{\lambda}
+^{2}}}+C$\\\hline
+$\int \!x^2\cos \left( \lambda\,x \right) {dx}= \frac{2\lambda x \cos(\lambda x) + ( \lambda^2x^2-2) \sin(\lambda x)}{\lambda^3}+C$\\\hline
+$\int \!x^2\sin \left( \lambda\,x \right) {dx}= \frac{2\lambda x \sin(\lambda x) + (2- \lambda^2x^2) \cos(\lambda x)}{\lambda^3}+C$\\\hline
+\end{tabu}}
+}
+\end{minipage}
+
+\end{document}
