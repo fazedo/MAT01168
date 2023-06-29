@@ -131,7 +131,7 @@ def completa_template_area(sdirname):
         
         lista_provas.append((ano, semestre, turmas[turma], texto_questao))
 
-    lista_provas.sort(reverse=True, key=lambda x:(x[0], x[1], -ord(x[2]), x[3])) # ordem decrescente do ano/semestre, mas crescente na turma
+    lista_provas.sort(reverse=True, key=lambda x:(x[0], x[1], [-ord(t) for t in x[2]], x[3])) # ordem decrescente do ano/semestre, mas crescente na turma
     texto_final = "\n".join([t[-1] for t in lista_provas])
     # print(texto_final)
     return texto_final
