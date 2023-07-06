@@ -62,8 +62,8 @@ font-weight: bold;
     <table><tbody>
     <tr><td>1. As resoluções nos gabaritos podem estar omitidas, resumidas demais ou mesmo conter erros.</td></tr>
     <tr><td>2. O estudo exclusivo pelas provas antigas não é suficiente.</td></tr>
-    <tr><td>3. Seja humilde e procure entender os fundamentos do conteúdo.</td></tr>
-    <tr><td>4. Não estude apenas os problemas pelas soluções.</td></tr>
+    <tr><td>3. Seja humilde e procure entender os fundamentos do conteúdo. Dedique-se também às primeiras listas.</td></tr>
+    <tr><td>4. Não estude apenas os problemas lendo soluções.</td></tr>
     </tbody></table>
     <br> 
 
