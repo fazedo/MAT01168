@@ -10,11 +10,11 @@ professores = {"ESE":"Esequia Sauter",
                "IRE":"Irene Strauch",
                "E_F":"Esequia/Fabio"}
 
-turmas = {"A":"A", "B":"B", "C":"C", "D":"D"} ## pode-se inserir "h":"A1", "H":"A2 etc.
+turmas = {"A":"A", "B":"B", "C":"C", "C1":"C1", "C2":"C2", "D":"D"} ## pode-se inserir "h":"A1", "H":"A2 etc.
 
 template_area = r"""
         <tr>
-          <td><a href="___DIRNAME___/___FILENAME___"> ___DESCRICAO___</a></td> 
+          <td><a href="___DIRNAME___/___FILENAME___"> ___DESCRICAO___</a></td>
           <td></td>
           <td>___GABARITO___</td>
         </tr>
@@ -22,35 +22,40 @@ template_area = r"""
 template_gabarito = r"""<a href="___DIRNAME___/___FILENAME___">Gabarito</a>"""
 
 def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma PRO=professor
-    gab = nome[17:20] == "gab" # isso não é um erro mesmo que a string tenha menos de 20 caracteres.
+    gab = nome[-7:-4] == "gab"
     
-    l = len(nome)   
-    l_valido = (l == 20 and not gab) or (l == 24 and gab) # há apenas dois comprimentos válidos
-    
-    if  not l_valido:
-        print("Nome de arquivo inválido:", l)
-        return None
-    
-    # A partir daqui, sabe-se que nome tem pelo menos 20 caracteres
+    l = len(nome)
+    l_valido = (l >= 20 and not gab) or (l >= 24 and gab) # comprimentos mínimos válidos
 
-    if nome[10] != "_" or nome[12] != "_" or (gab and nome[16] != "_"):
-        print("Nome de arquivo inválido.")
+    pos_under = [n for n in range(l) if nome[n] == "_"]  # localiza todos "_"
+    n_under = len(pos_under)  # nome.count("_")
+
+    under_valido = (n_under == 2 and not gab) or (n_under == 3 and gab)
+
+    if  not l_valido:
+        print("Comprimento inválido:", l, nome)
         return None
-        
-    if  nome[0:5] != "prova": 
+
+    if  not under_valido:
+        print("Formato inválido:", l, nome)
+        return None
+
+    if  nome[0:5] != "prova":
         print("Não é prova:", nome)
         return None
-    
-    if  nome[-4:] != ".pdf": 
-        print("Não é .pdf:", nome)
+
+    if  nome[-4:] != ".pdf":
+        print("Não é pdf:", nome)
         return None
-    
+
+
     # numero   = nome[5] # só serve para testar o nome do arquivo - excluido
-    ano      = nome[5:9]
-    semestre = nome[9]
-    turma    = nome[11]
-    prof     = nome[13:16]
-    
+    ano       = nome[5:5+4]
+    semestre  = nome[9]
+
+    turma     = nome[11:pos_under[1]]
+    prof      = nome[pos_under[1]+1:pos_under[1]+4]
+
     if turma not in turmas:
         print("Turma inválida:", turma)
         return None
@@ -79,7 +84,7 @@ def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma 
     if prof not in professores:
         print("Professor inválido:", prof)
         return None
-    
+
     nome_prof = professores[prof]
 
     # print(turma, ano, semestre, gab, nome_prof)
@@ -88,10 +93,11 @@ def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma 
 
 
 
+
 def completa_template_area(sdirname):
     provas    = {}
     gabaritos = {}
-    
+
     for nome in os.listdir(sdirname):
         if "pdf" != nome[-3:]:
             continue
@@ -100,7 +106,7 @@ def completa_template_area(sdirname):
         if p == None:
             print("Erro!!  ", nome)
             quit()
-        
+
         turma, ano, semestre, gab, nome_prof = p
 
         ## Vou guardar em dicionários por mais que o nome tenha formato fixo.
@@ -123,12 +129,12 @@ def completa_template_area(sdirname):
         comentario = f"Turma {turmas[turma]} {ano}/{semestre} - prof. {nome_prof}"
         texto_gabarito = template_gabarito.replace("___DIRNAME___", sdirname)\
                                         .replace("___FILENAME___", gabaritos[prova]) if gab else ""
-        
+
         texto_questao = template_area.replace("___DIRNAME___", sdirname)     \
                                      .replace("___FILENAME___", nome_arq)    \
                                      .replace("___DESCRICAO___", comentario) \
                                      .replace("___GABARITO___", texto_gabarito)
-        
+
         lista_provas.append((ano, semestre, turmas[turma], texto_questao))
 
     lista_provas.sort(reverse=True, key=lambda x:(x[0], x[1], [-ord(t) for t in x[2]], x[3])) # ordem decrescente do ano/semestre, mas crescente na turma
