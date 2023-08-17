@@ -62,10 +62,11 @@ font-weight: bold;
     <table><tbody>
     <tr><td>1. As resoluções nos gabaritos podem estar omitidas, resumidas demais ou mesmo conter erros.</td></tr>
     <tr><td>2. O estudo exclusivo pelas provas antigas não é suficiente.</td></tr>
-    <tr><td>3. Seja humilde e procure entender os fundamentos do conteúdo.</td></tr>
-    <tr><td>4. Não estude apenas os problemas pelas soluções.</td></tr>
+    <tr><td>3. Seja humilde e procure entender os fundamentos. Pular etapas pode ser perda de tempo.</td></tr>
+    <tr><td>4. Não estude apenas os problemas pelas soluções. Fazer é diferente de ver outra pessoa fazer.</td></tr>
+    <tr><td>5. Procure se envolver com os conteúdos, fugindo do estudo mecânico.</td></tr>
     </tbody></table>
-    <br> 
+    <br>
 
     <!-- Link -->
     <br> <br>
@@ -76,16 +77,16 @@ font-weight: bold;
     <!-- Vetorial -->
     <br> <br>
     <div style="text-align: left;" class="subtitulo">Provas Antigas - Análise Vetorial<br></div>
-    
+
     <table>
        <tbody>
 
 
          ___PROVAS___VETORIAL___
-            
+
        </tbody>
     </table>
-      
+
 
     <!-- Laplace -->
     <hr><br><br>
@@ -93,7 +94,7 @@ font-weight: bold;
 
     <table>
       <tbody>
-        
+
         ___PROVAS___LAPLACE___
 
       <tbody>
@@ -106,9 +107,9 @@ font-weight: bold;
 
     <table>
       <tbody>
-   
+
         ___PROVAS___FOURIER___
-   
+
       </tbody>
      </table>
   </body>
