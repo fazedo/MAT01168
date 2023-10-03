@@ -26,7 +26,7 @@
   
    {\bf MAT01168}
 
-    {\bf Prova da área IIA}
+    {\bf Prova da área IIB}
 \end{minipage}\hfill\begin{minipage}{5.75cm}
     \begin{tabular}{|c|c|c|c|}  \hline
         {\bf } & {\bf }& {\bf }&   {\bf }\!\! \\
@@ -122,10 +122,11 @@ Tabela de integrais definidas:
 
 
 
-\noindent{\tabulinesep=1.1mm \begin{tabu}{|ll|ll|}
+\noindent{\tabulinesep=0.7mm \begin{tabu}{|ll|ll|}
 \hline 
-1.&$\displaystyle  \int_0^\infty e^{-ax}\cos(mx)dx=\frac{a}{a^2+m^2}\qquad (a>0) $&2.& $\displaystyle  \int_0^\infty e^{-ax}\sin(mx)dx=\frac{m}{a^2+m^2}\qquad (a>0) $ \\ \hline
-3.&$\displaystyle  \int_0^\infty \frac{\cos(mx)}{a^2+x^2}dx=\frac{\pi}{2a}e^{-ma}\qquad (a>0,\ m\geq 0) $&4.& $\displaystyle  \int_0^\infty \frac{x\sin(mx)}{a^2+x^2}dx=\frac{\pi}{2}e^{-ma}\qquad (a\geq0,\ m> 0) $ \\ \hline
+1.&$\displaystyle  \int_0^\infty e^{-ax}\cos(mx)dx=\frac{a}{a^2+m^2}\qquad (a>0) $&2.& $\displaystyle  \int_0^\infty e^{-ax}\sin(mx)dx=\frac{m}{a^2+m^2}\qquad (a>0) $ 
+\\ \hline 
+3.&$\displaystyle  \int_0^\infty \frac{\cos(mx)}{a^2+x^2}dx=\frac{\pi}{2a}e^{-|m|a}\qquad (a>0) $&4.& $ \int_0^\infty \frac{x\sin(mx)}{a^2+x^2}dx= \left\{\begin{array}{l}\frac{\pi}{2}e^{-|m|a},\ \ m>0\\\\ 0,\ \ m=0\\\\-\frac{\pi}{2}e^{-|m|a},\ \ m<0 \end{array}\right.\qquad  $ \\ \hline
 5.&$\displaystyle  \int_0^\infty \frac{\sin(mx)\cos(nx)}{x}dx=\left\{\begin{array}{l}\frac{\pi }{2},\ \ n<m\\\\\frac{\pi }{4},\ \ n=m,\ \begin{array}{c} \!\!(m>0,\\ \ n>0)\end{array}\\\\ 0,\ \ n>m \end{array}\right. $& 6.&$\displaystyle  \int_0^\infty \frac{\sin(mx)}{x}dx=\left\{\begin{array}{l}\frac{\pi }{2},\ \ m>0\\\\ 0,\ \ m=0\\\\-\frac{\pi }{2},\ \ m<0 \end{array}\right. $ \\ \hline
 7.&$\displaystyle  \int_0^\infty e^{-r^2x^2}dx=\frac{\sqrt{\pi}}{2r}\qquad (r>0) $&8.& $\displaystyle  \int_0^\infty e^{-a^2x^2}\cos(mx)dx=\frac{\sqrt{\pi}}{2a}e^{-\frac{m^2}{4a^2}}\qquad (a>0) $ \\ \hline
 9.&$\displaystyle  \int_0^\infty xe^{-ax}\sin(mx)dx=\frac{2am}{(a^2+m^2)^2}\qquad (a>0) $&10.&{\tabulinesep=1.1mm \begin{tabu}{l}$\displaystyle  \int_0^\infty e^{-ax}\sin(mx)\cos(nx)dx=$ \\\hspace{30pt}$\displaystyle=\frac{m(a^2+m^2-n^2)}{(a^2+(m-n)^2)(a^2+(m+n)^2)}\quad (a>0) $\end{tabu}} \\\hline
@@ -133,8 +134,8 @@ Tabela de integrais definidas:
 13.&$\displaystyle  \int_0^\infty \frac{\sin^2(mx)}{x^2}dx=|m|\frac{\pi}{2} $&14.& $\displaystyle  erf(x)=\frac{2}{\sqrt{\pi}}\int_0^x e^{-z^2}dz $ \\ \hline
 15.&$\displaystyle  \int_0^\infty \frac{\sin^2(ax)\sin(mx)}{x}dx=\left\{\begin{array}{l}\frac{\pi }{4},\ (0<m<2a)\\\\\frac{\pi }{8},\ (0<2a=m)\\\\ 0,\ (0<2a<m) \end{array}\right. $&16.& $\displaystyle \int_0^\infty \frac{\sin(mx)\sin(nx)}{x^2}dx=\left\{\begin{array}{l}\frac{\pi m}{2},\ (0<m\leq n)\\\\\frac{\pi n}{2},\ (0<n\leq m) \end{array}\right. $ \\ \hline
 17.&$\displaystyle  \int_0^\infty x^2e^{-ax}\sin(mx)dx=\frac{2m(3a^2-m^2)}{(a^2+m^2)^3}\qquad (a>0) $&18.& $\displaystyle \int_0^\infty x^2e^{-ax}\cos(mx)dx=\frac{2a(a^2-3m^2)}{(a^2+m^2)^3}\quad (a>0) $ \\ \hline
-19.&$\displaystyle  \int_0^\infty \frac{\cos(mx)}{(a^2+x^2)^2}dx=\frac{\pi}{4a^3}(1+ma)e^{-ma}\quad \begin{array}{l}\!\!(a>0,\\ \ m\geq 0)\end{array} $&20.& $\displaystyle  \int_0^\infty \frac{x\sin(mx)}{(a^2+x^2)^2}dx=\frac{\pi m}{4a}e^{-ma} \quad (a>0,\ m>0) $ \\ \hline
-21.&$\displaystyle  \int_0^\infty \frac{x^2\cos(mx)}{(a^2+x^2)^2}dx=\frac{\pi}{4a}(1-ma)e^{-ma}\quad \begin{array}{l}\!\!(a>0,\\ \ m\geq 0)\end{array} $&22.& $\displaystyle  \int_0^\infty xe^{-a^2x^2}\sin(mx)dx=\frac{ m \sqrt{\pi}}{4a^3}e^{-\frac{m^2}{4a^2}} \quad (a>0) $\\ \hline
+19.&$\displaystyle  \int_0^\infty \frac{\cos(mx)}{(a^2+x^2)^2}dx=\frac{\pi}{4a^3}(1+|m|a)e^{-|m|a}\quad \begin{array}{l}\!\!(a>0)\end{array} $&20.& $\displaystyle  \int_0^\infty \frac{x\sin(mx)}{(a^2+x^2)^2}dx=\frac{\pi m}{4a}e^{-|m|a} \quad (a>0) $ \\ \hline
+21.&$\displaystyle  \int_0^\infty \frac{x^2\cos(mx)}{(a^2+x^2)^2}dx=\frac{\pi}{4a}(1-|m|a)e^{-|m|a}\quad \begin{array}{l}\!\!(a>0)\end{array} $&22.& $\displaystyle  \int_0^\infty xe^{-a^2x^2}\sin(mx)dx=\frac{ m \sqrt{\pi}}{4a^3}e^{-\frac{m^2}{4a^2}} \quad (a>0) $\\ \hline
 \end{tabu}
 
 \vspace{15pt}
