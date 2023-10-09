@@ -21,6 +21,23 @@ template_area = r"""
 """
 template_gabarito = r"""<a href="___DIRNAME___/___FILENAME___">Gabarito</a>"""
 
+
+
+def main():
+    with open("template_provas.tl", "r") as f:
+        template_pagina = f.read()
+
+    texto_final = template_pagina.replace("___PROVAS___VETORIAL___", completa_template_area("Vetorial"))\
+                                 .replace("___PROVAS___LAPLACE___",  completa_template_area("Laplace")) \
+                                 .replace("___PROVAS___FOURIER___",  completa_template_area("Fourier"))
+
+
+    # print(texto_final)
+
+    with open("provas.html", "w") as f:
+        f.write(texto_final)
+
+
 def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma PRO=professor
 
     # Testa que início e extensão do nome de arquivo.
@@ -40,8 +57,6 @@ def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma 
     if not ((n_partes  == 3 and not gab) or (n_partes == 4 and gab)):
         print("Formato inválido:", nome)
 
-
-    print(partes)
     ano_semestre, turma, prof = partes[:3]
     
     try:
@@ -75,8 +90,6 @@ def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma 
 
 
 
-
-
 def completa_template_area(sdirname):
     provas    = {}
     gabaritos = {}
@@ -92,26 +105,20 @@ def completa_template_area(sdirname):
 
         turma, ano, semestre, gab, nome_prof = p
 
-        ## Vou guardar em dicionários por mais que o nome tenha formato fixo.
-        ## Talvez queiramos mudar algo no futuro.
-        ## As chaves dos gabaritos são tuplas, é muito estranho não usar os nomes, mas me parece mais flexível.
-
         if gab:
-            gabaritos[(turma, ano, semestre, nome_prof)] = nome
+            gabaritos[nome] = (turma, ano, semestre, nome_prof)
         else:
-            provas[(turma, ano, semestre, nome_prof)] = nome
-
+            provas[nome]    = (turma, ano, semestre, nome_prof)
 
     lista_provas = []
 
-    for prova in provas:
-        (turma, ano, semestre, nome_prof) = prova
-        gab = prova in gabaritos
+    for nome_arq in provas:
+        (turma, ano, semestre, nome_prof) = provas[nome_arq]
+        gab = nome_arq in gabaritos  # A prova tem um gabarito associado?
 
-        nome_arq = provas[prova]
         comentario = f"Turma {turmas[turma]} {ano}/{semestre} - prof. {nome_prof}"
         texto_gabarito = template_gabarito.replace("___DIRNAME___", sdirname)\
-                                        .replace("___FILENAME___", gabaritos[prova]) if gab else ""
+                                          .replace("___FILENAME___", gabaritos[prova]) if gab else ""
 
         texto_questao = template_area.replace("___DIRNAME___", sdirname)     \
                                      .replace("___FILENAME___", nome_arq)    \
@@ -126,17 +133,4 @@ def completa_template_area(sdirname):
     return texto_final
 
 
-with open("template_provas.tl", "r") as f:
-    template_pagina = f.read()
-
-# print(template_pagina)
-
-texto_final = template_pagina.replace("___PROVAS___VETORIAL___", completa_template_area("Vetorial"))\
-                             .replace("___PROVAS___LAPLACE___",  completa_template_area("Laplace")) \
-                             .replace("___PROVAS___FOURIER___",  completa_template_area("Fourier"))
-
-
-# print(texto_final)
-
-with open("provas.html", "w") as f:
-    f.write(texto_final)
+main()
