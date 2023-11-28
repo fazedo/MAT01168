@@ -21,65 +21,64 @@ template_area = r"""
 """
 template_gabarito = r"""<a href="___DIRNAME___/___FILENAME___">Gabarito</a>"""
 
+
+
+def main():
+    with open("template_provas.tl", "r") as f:
+        template_pagina = f.read()
+
+    texto_final = template_pagina.replace("___PROVAS___VETORIAL___", completa_template_area("Vetorial"))\
+                                 .replace("___PROVAS___LAPLACE___",  completa_template_area("Laplace")) \
+                                 .replace("___PROVAS___FOURIER___",  completa_template_area("Fourier"))
+
+
+    # print(texto_final)
+
+    with open("provas.html", "w") as f:
+        f.write(texto_final)
+
+
 def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma PRO=professor
-    gab = nome[-7:-4] == "gab"
-    
-    l = len(nome)
-    l_valido = (l >= 20 and not gab) or (l >= 24 and gab) # comprimentos mínimos válidos
 
-    pos_under = [n for n in range(l) if nome[n] == "_"]  # localiza todos "_"
-    n_under = len(pos_under)  # nome.count("_")
-
-    under_valido = (n_under == 2 and not gab) or (n_under == 3 and gab)
-
-    if  not l_valido:
-        print("Comprimento inválido:", l, nome)
-        return None
-
-    if  not under_valido:
-        print("Formato inválido:", l, nome)
-        return None
-
-    if  nome[0:5] != "prova":
+    # Testa que início e extensão do nome de arquivo.
+    if  not nome.startswith("prova"):
         print("Não é prova:", nome)
         return None
 
-    if  nome[-4:] != ".pdf":
+    if  not nome.endswith(".pdf"):
         print("Não é pdf:", nome)
         return None
+    
+    partes   = nome[5:-4].split("_") # Remove início e final do nome e quebra em substrings
+    n_partes = len(partes)
+    
+    gab = n_partes > 3 and partes[3] == "gab" # Verifica se é gabarito de prova.
+    
+    if not ((n_partes  == 3 and not gab) or (n_partes == 4 and gab)):
+        print("Formato inválido:", nome)
 
-
-    # numero   = nome[5] # só serve para testar o nome do arquivo - excluido
-    ano       = nome[5:5+4]
-    semestre  = nome[9]
-
-    turma     = nome[11:pos_under[1]]
-    prof      = nome[pos_under[1]+1:pos_under[1]+4]
-
+    ano_semestre, turma, prof = partes[:3]
+    
+    try:
+        ano      = ano_semestre[:4]
+        semestre = ano_semestre[4]
+        ano_int      = int(ano)
+        semestre_int = int(semestre)
+    except:
+        print("Ano inválido ou semestre inválido inválido:", nome) # ou número
+        return None
+    
     if turma not in turmas:
         print("Turma inválida:", turma)
         return None
 
-    try:
-        ano_int = int(ano)
-        semestre_int = int(semestre)
-        # numero_int = int(numero)
-    except:
-        print("Ano inválido ou semestre inválido inválido:", ano, semestre) # ou número
-        return None
-
     if not (2010 < ano_int < 2040):
-        print("Tem certeza que o ano está correto?!:", ano)
+        print("Tem certeza que o ano está correto?!:", ano_int)
         return None
 
     if not (1 <= semestre_int <= 2):
-        print("Semestre inválido:", semestre)
+        print("Semestre inválido:", semestre_int)
         return None
-
-#    if not (1 <= numero_int <= 3):
-#       print("Que área é essa, tchê? ", numero)
-#        return None
-
 
     if prof not in professores:
         print("Professor inválido:", prof)
@@ -87,10 +86,7 @@ def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma 
 
     nome_prof = professores[prof]
 
-    # print(turma, ano, semestre, gab, nome_prof)
     return (turma, ano, semestre, gab, nome_prof)
-
-
 
 
 
@@ -109,26 +105,20 @@ def completa_template_area(sdirname):
 
         turma, ano, semestre, gab, nome_prof = p
 
-        ## Vou guardar em dicionários por mais que o nome tenha formato fixo.
-        ## Talvez queiramos mudar algo no futuro.
-        ## As chaves dos gabaritos são tuplas, é muito estranho não usar os nomes, mas me parece mais flexível.
-
         if gab:
-            gabaritos[(turma, ano, semestre, nome_prof)] = nome
+            gabaritos[nome] = (turma, ano, semestre, nome_prof)
         else:
-            provas[(turma, ano, semestre, nome_prof)] = nome
-
+            provas[nome]    = (turma, ano, semestre, nome_prof)
 
     lista_provas = []
 
-    for prova in provas:
-        (turma, ano, semestre, nome_prof) = prova
-        gab = prova in gabaritos
+    for nome_arq in provas:
+        (turma, ano, semestre, nome_prof) = provas[nome_arq]
+        gab = nome_arq in gabaritos  # A prova tem um gabarito associado?
 
-        nome_arq = provas[prova]
         comentario = f"Turma {turmas[turma]} {ano}/{semestre} - prof. {nome_prof}"
         texto_gabarito = template_gabarito.replace("___DIRNAME___", sdirname)\
-                                        .replace("___FILENAME___", gabaritos[prova]) if gab else ""
+                                          .replace("___FILENAME___", gabaritos[prova]) if gab else ""
 
         texto_questao = template_area.replace("___DIRNAME___", sdirname)     \
                                      .replace("___FILENAME___", nome_arq)    \
@@ -143,17 +133,4 @@ def completa_template_area(sdirname):
     return texto_final
 
 
-with open("template_provas.tl", "r") as f:
-    template_pagina = f.read()
-
-# print(template_pagina)
-
-texto_final = template_pagina.replace("___PROVAS___VETORIAL___", completa_template_area("Vetorial"))\
-                             .replace("___PROVAS___LAPLACE___",  completa_template_area("Laplace")) \
-                             .replace("___PROVAS___FOURIER___",  completa_template_area("Fourier"))
-
-
-# print(texto_final)
-
-with open("provas.html", "w") as f:
-    f.write(texto_final)
+main()
