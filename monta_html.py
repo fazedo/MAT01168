@@ -48,17 +48,17 @@ def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma 
     if  not nome.endswith(".pdf"):
         print("Não é pdf:", nome)
         return None
-    
+
     partes   = nome[5:-4].split("_") # Remove início e final do nome e quebra em substrings
     n_partes = len(partes)
-    
+
     gab = n_partes > 3 and partes[3] == "gab" # Verifica se é gabarito de prova.
     
     if not ((n_partes  == 3 and not gab) or (n_partes == 4 and gab)):
         print("Formato inválido:", nome)
 
     ano_semestre, turma, prof = partes[:3]
-    
+
     try:
         ano      = ano_semestre[:4]
         semestre = ano_semestre[4]
@@ -67,7 +67,7 @@ def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma 
     except:
         print("Ano inválido ou semestre inválido inválido:", nome) # ou número
         return None
-    
+
     if turma not in turmas:
         print("Turma inválida:", turma)
         return None
@@ -85,7 +85,7 @@ def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma 
         return None
 
     nome_prof = professores[prof]
-
+    # print((turma, ano, semestre, gab, nome_prof))
     return (turma, ano, semestre, gab, nome_prof)
 
 
@@ -106,22 +106,24 @@ def completa_template_area(sdirname):
         turma, ano, semestre, gab, nome_prof = p
 
         if gab:
-            gabaritos[nome] = (turma, ano, semestre, nome_prof)
+            # print(nome)
+            gabaritos[(turma, ano, semestre, nome_prof)] =  nome
         else:
-            provas[nome]    = (turma, ano, semestre, nome_prof)
+            provas[(turma, ano, semestre, nome_prof)]    = nome
 
     lista_provas = []
 
-    for nome_arq in provas:
-        (turma, ano, semestre, nome_prof) = provas[nome_arq]
-        gab = nome_arq in gabaritos  # A prova tem um gabarito associado?
+    for dados_prova in provas:
+        turma, ano, semestre, nome_prof = dados_prova
+
+        gab = dados_prova in gabaritos  # A prova tem um gabarito associado?
 
         comentario = f"Turma {turmas[turma]} {ano}/{semestre} - prof. {nome_prof}"
         texto_gabarito = template_gabarito.replace("___DIRNAME___", sdirname)\
-                                          .replace("___FILENAME___", gabaritos[prova]) if gab else ""
+                                          .replace("___FILENAME___", gabaritos[dados_prova]) if gab else ""
 
         texto_questao = template_area.replace("___DIRNAME___", sdirname)     \
-                                     .replace("___FILENAME___", nome_arq)    \
+                                     .replace("___FILENAME___", provas[dados_prova])    \
                                      .replace("___DESCRICAO___", comentario) \
                                      .replace("___GABARITO___", texto_gabarito)
 
