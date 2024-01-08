@@ -119,17 +119,18 @@ def completa_template_area(sdirname):
         gab = dados_prova in gabaritos  # A prova tem um gabarito associado?
 
         comentario = f"Turma {turmas[turma]} {ano}/{semestre} - prof. {nome_prof}"
-        texto_gabarito = template_gabarito.replace("___DIRNAME___", sdirname)\
+        texto_gabarito = template_gabarito.replace("___DIRNAME___", sdirname) \
                                           .replace("___FILENAME___", gabaritos[dados_prova]) if gab else ""
 
-        texto_questao = template_area.replace("___DIRNAME___", sdirname)     \
-                                     .replace("___FILENAME___", provas[dados_prova])    \
+        texto_questao = template_area.replace("___DIRNAME___", sdirname) \
+                                     .replace("___FILENAME___", provas[dados_prova]) \
                                      .replace("___DESCRICAO___", comentario) \
                                      .replace("___GABARITO___", texto_gabarito)
 
         lista_provas.append((ano, semestre, turmas[turma], texto_questao))
 
-    lista_provas.sort(reverse=True, key=lambda x:(x[0], x[1], [-ord(t) for t in x[2]], x[3])) # ordem decrescente do ano/semestre, mas crescente na turma
+    # Ordem decrescente do ano/semestre, mas crescente na turma
+    lista_provas.sort(reverse=True, key=lambda x:(x[0], x[1], [-ord(t) for t in x[2]], x[3]))
     texto_final = "\n".join([t[-1] for t in lista_provas])
     # print(texto_final)
     return texto_final
