@@ -1,16 +1,16 @@
-import sys
 import os
 
 # import numpy as np
 
-professores = {"ESE":"Esequia Sauter",
-               "FSA":"Fabio Azevedo",
-               "LGD":"Leonardo Guidi",
-               "JBC":"João Batista",
-               "IRE":"Irene Strauch",
-               "E_F":"Esequia/Fabio"}
+professores = {"ESE": "Esequia Sauter",
+               "FSA": "Fabio Azevedo",
+               "LGD": "Leonardo Guidi",
+               "JBC": "João Batista",
+               "IRE": "Irene Strauch",
+               "E_F": "Esequia/Fabio"}
 
-turmas = {"A":"A", "B":"B", "C":"C", "C1":"C1", "C2":"C2", "D":"D"} ## pode-se inserir "h":"A1", "H":"A2 etc.
+# Pode-se inserir "h":"A1", "H":"A2 etc.
+turmas = {"A": "A", "B": "B", "C": "C", "C1": "C1", "C2": "C2", "D": "D"}
 
 template_area = r"""
         <tr>
@@ -22,50 +22,52 @@ template_area = r"""
 template_gabarito = r"""<a href="___DIRNAME___/___FILENAME___">Gabarito</a>"""
 
 
-
 def main():
     with open("template_provas.tl", "r") as f:
         template_pagina = f.read()
 
-    texto_final = template_pagina.replace("___PROVAS___VETORIAL___", completa_template_area("Vetorial"))\
-                                 .replace("___PROVAS___LAPLACE___",  completa_template_area("Laplace")) \
-                                 .replace("___PROVAS___FOURIER___",  completa_template_area("Fourier"))
+    texto_final = template_pagina \
+        .replace("___PROVAS___VETORIAL___", completa_template_area("Vetorial")) \
+        .replace("___PROVAS___LAPLACE___", completa_template_area("Laplace")) \
+        .replace("___PROVAS___FOURIER___", completa_template_area("Fourier"))
 
-
-    # print(texto_final)
-
-    with open("provas.html", "w") as f:
+    arq = "provas.html"
+    with open(arq, "w") as f:
         f.write(texto_final)
+    print(f"Arquivo {arq} criado com sucesso.")
 
 
-def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma PRO=professor
+# provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma PRO=professor
+def parse_nome(nome): 
 
     # Testa que início e extensão do nome de arquivo.
-    if  not nome.startswith("prova"):
+    if not nome.startswith("prova"):
         print("Não é prova:", nome)
         return None
 
-    if  not nome.endswith(".pdf"):
+    if not nome.endswith(".pdf"):
         print("Não é pdf:", nome)
         return None
 
-    partes   = nome[5:-4].split("_") # Remove início e final do nome e quebra em substrings
+    # Remove início e final do nome e quebra em substrings
+    partes = nome[5: -4].split("_")
     n_partes = len(partes)
 
-    gab = n_partes > 3 and partes[3] == "gab" # Verifica se é gabarito de prova.
+    # Verifica se é gabarito de prova.
+    gab = n_partes > 3 and partes[3] == "gab"
     
-    if not ((n_partes  == 3 and not gab) or (n_partes == 4 and gab)):
+    if not ((n_partes == 3 and not gab) or (n_partes == 4 and gab)):
         print("Formato inválido:", nome)
 
     ano_semestre, turma, prof = partes[:3]
 
     try:
-        ano      = ano_semestre[:4]
+        ano = ano_semestre[:4]
         semestre = ano_semestre[4]
-        ano_int      = int(ano)
+        ano_int = int(ano)
         semestre_int = int(semestre)
-    except:
-        print("Ano inválido ou semestre inválido inválido:", nome) # ou número
+    except ValueError:
+        print("Ano inválido ou semestre inválido inválido:", nome)
         return None
 
     if turma not in turmas:
@@ -89,9 +91,8 @@ def parse_nome(nome): # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma 
     return (turma, ano, semestre, gab, nome_prof)
 
 
-
 def completa_template_area(sdirname):
-    provas    = {}
+    provas = {}
     gabaritos = {}
 
     for nome in os.listdir(sdirname):
@@ -99,7 +100,7 @@ def completa_template_area(sdirname):
             continue
 
         p = parse_nome(nome)
-        if p == None:
+        if p is None:
             print("Erro!!  ", nome)
             quit()
 
@@ -107,30 +108,41 @@ def completa_template_area(sdirname):
 
         if gab:
             # print(nome)
-            gabaritos[(turma, ano, semestre, nome_prof)] =  nome
+            gabaritos[(turma, ano, semestre, nome_prof)] = nome
         else:
             provas[(turma, ano, semestre, nome_prof)]    = nome
 
     lista_provas = []
 
     for dados_prova in provas:
-        turma, ano, semestre, nome_prof = dados_prova
+        turma_key, ano, semestre, nome_prof = dados_prova
+        turma = turma_key
 
-        gab = dados_prova in gabaritos  # A prova tem um gabarito associado?
+        # Verifica se a prova tem um gabarito associado
+        gab = dados_prova in gabaritos
 
-        comentario = f"Turma {turmas[turma]} {ano}/{semestre} - prof. {nome_prof}"
-        texto_gabarito = template_gabarito.replace("___DIRNAME___", sdirname) \
-                                          .replace("___FILENAME___", gabaritos[dados_prova]) if gab else ""
+        comentario = f"Turma {turma} {ano}/{semestre} - prof. {nome_prof}"
+        if gab:
+            texto_gabarito = template_gabarito \
+                .replace("___DIRNAME___", sdirname) \
+                .replace("___FILENAME___", gabaritos[dados_prova])
+        else:
+            texto_gabarito = ""
 
-        texto_questao = template_area.replace("___DIRNAME___", sdirname) \
-                                     .replace("___FILENAME___", provas[dados_prova]) \
-                                     .replace("___DESCRICAO___", comentario) \
-                                     .replace("___GABARITO___", texto_gabarito)
+        texto_questao = template_area\
+            .replace("___DIRNAME___", sdirname) \
+            .replace("___FILENAME___", provas[dados_prova]) \
+            .replace("___DESCRICAO___", comentario) \
+            .replace("___GABARITO___", texto_gabarito)
 
         lista_provas.append((ano, semestre, turmas[turma], texto_questao))
 
     # Ordem decrescente do ano/semestre, mas crescente na turma
-    lista_provas.sort(reverse=True, key=lambda x:(x[0], x[1], [-ord(t) for t in x[2]], x[3]))
+    lista_provas.sort(
+        reverse=True,
+        key=lambda x: (x[0], x[1], [-ord(t) for t in x[2]], x[3])
+    )
+
     texto_final = "\n".join([t[-1] for t in lista_provas])
     # print(texto_final)
     return texto_final
