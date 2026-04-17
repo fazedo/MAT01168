@@ -38,7 +38,7 @@ def main():
 
 
 # provaAAAAS_T_PRO[gab].pdf" aaaa=ano  S=semestre T=turma PRO=professor
-def parse_nome(nome): 
+def parse_nome(nome):
 
     # Testa que início e extensão do nome de arquivo.
     if not nome.startswith("prova"):
@@ -55,7 +55,7 @@ def parse_nome(nome):
 
     # Verifica se é gabarito de prova.
     gab = n_partes > 3 and partes[3] == "gab"
-    
+
     if not ((n_partes == 3 and not gab) or (n_partes == 4 and gab)):
         print("Formato inválido:", nome)
 
