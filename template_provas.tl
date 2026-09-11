@@ -1,117 +1,192 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>Provas Antigas</title>
+    <meta charset="utf-8">
+    <title>Provas Antigas - MAT01168</title>
+
     <style type="text/css">
-body {
-background-color: #CCCCCC;
-margin-left: 100px;
-margin-top: 0px;
-margin-right: 100px;
-margin-bottom: 0px;
-}
-body,td,th {
-font-family: Times New Roman, Times, serif;
-font-size: 16px;
-}
-a {
-font-weight: bold;
-}
-.style2 {
-font-size: 50px;
-color: #000010;
-}
-.subtitulo {
-font-family:Arial
-font-weight: bold;
-font-size: 40px
-}
-.style6 {
-color: #000000;
-font-weight: bold;
-}
-.style7 {font-size: 13px; font-weight: bold; color: #000000; }
-.style9 {font-size: 12px; font-weight: bold; color: #000000; }
-.style10 {color: #000080}
-.style11 {color: #FFFFFF}
-.style13 {
-color: #FFFFFF;
-font-size: 12px;
-font-weight: bold;
-}
-  </style>
+      body {
+        background-color: #ffffff;
+        color: #000000;
+        margin: 0 100px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+
+      a {
+        color: #003399;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .titulo {
+        text-align: center;
+        font-size: 42px;
+        color: #000010;
+        margin: 20px 0;
+      }
+
+      .subtitulo {
+        font-weight: bold;
+        font-size: 28px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+      }
+
+      .avisos {
+        max-width: 900px;
+        line-height: 1.5;
+        margin-bottom: 30px;
+      }
+
+      .repositorio {
+        margin-bottom: 30px;
+      }
+
+      .lista-provas {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 900px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+
+      .lista-provas tr {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .lista-provas tr:hover {
+        background-color: #f5f5f5;
+      }
+
+      .lista-provas td {
+        padding: 10px 12px;
+      }
+
+      .lista-provas .prova {
+        width: 80%;
+      }
+
+      .lista-provas .gabarito {
+        width: 20%;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .link-gabarito {
+        display: inline-block;
+        padding: 4px 9px;
+        border: 1px solid #999999;
+        border-radius: 4px;
+        background-color: #ffffff;
+        font-size: 0.9em;
+        font-weight: normal;
+      }
+
+      .link-gabarito:hover {
+        background-color: #eeeeee;
+        text-decoration: none;
+      }
+
+      hr {
+        border: 0;
+        border-top: 1px solid #cccccc;
+        margin: 25px 0;
+      }
+
+      @media (max-width: 800px) {
+        body {
+          margin: 0 20px;
+        }
+
+        .titulo {
+          font-size: 32px;
+        }
+
+        .subtitulo {
+          font-size: 24px;
+        }
+
+        .lista-provas .prova {
+          width: 70%;
+        }
+
+        .lista-provas .gabarito {
+          width: 30%;
+        }
+      }
+    </style>
   </head>
 
+  <body>
+    <hr>
 
-<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
-  <hr>
-  <table border="0" width="100%">
-    <tbody>
-      <tr>
-        <div style="text-align: center;" class="style2">MAT01168 - Matemática Aplicada II - Avaliações antigas<br></div>
-      </tr>
-    </tbody>
-   </table>
-   <hr>
+    <div class="titulo">
+      MAT01168 - Matemática Aplicada II - Avaliações antigas
+    </div>
 
-   <!-- Avisos -->
-    <br> <br>
-    <div style="text-align: left;" class="subtitulo">Tenha em mente<br></div>
+    <hr>
 
-    <table><tbody>
-    <tr><td>1. As resoluções nos gabaritos podem estar omitidas, resumidas demais ou mesmo conter erros.</td></tr>
-    <tr><td>2. O estudo exclusivo pelas provas antigas não é suficiente.</td></tr>
-    <tr><td>3. Seja humilde e procure entender os fundamentos. Pular etapas pode ser perda de tempo. Dedique-se também às primeiras listas.</td></tr>
-    <tr><td>4. Não estude apenas os problemas pelas soluções. Fazer é diferente de ver outra pessoa fazer.</td></tr>
-    <tr><td>5. Procure se envolver com os conteúdos, fugindo do estudo mecânico.</td></tr>
-    </tbody></table>
-    <br>
+    <div class="subtitulo">Tenha em mente</div>
 
-    <!-- Link -->
-    <br> <br>
-    <div style="text-align: left;" class="subtitulo">Repositório no Github<br></div>
-    <table><tbody><tr><td></td><a href="https://github.com/fazedo/MAT01168">https://github.com/fazedo/MAT01168</a></tr></tbody></table>
-    <br>
+    <div class="avisos">
+      <ol>
+        <li>As resoluções nos gabaritos podem estar omitidas, resumidas demais ou mesmo conter erros.</li>
+        <li>O estudo exclusivo pelas provas antigas não é suficiente.</li>
+        <li>Seja humilde e procure entender os fundamentos. Pular etapas pode ser perda de tempo. Dedique-se também às primeiras listas.</li>
+        <li>Não estude apenas os problemas pelas soluções. Fazer é diferente de ver outra pessoa fazer.</li>
+        <li>Procure se envolver com os conteúdos, fugindo do estudo mecânico.</li>
+      </ol>
+    </div>
 
-    <!-- Vetorial -->
-    <br> <br>
-    <div style="text-align: left;" class="subtitulo">Provas Antigas - Análise Vetorial<br></div>
+    <div class="subtitulo">Repositório no GitHub</div>
 
-    <table>
-       <tbody>
+    <div class="repositorio">
+      <a href="https://github.com/fazedo/MAT01168">
+        https://github.com/fazedo/MAT01168
+      </a>
+    </div>
 
+    <hr>
 
-         ___PROVAS___VETORIAL___
+    <div class="subtitulo">
+      Provas Antigas - Análise Vetorial
+    </div>
 
-       </tbody>
-    </table>
-
-
-    <!-- Laplace -->
-    <hr><br><br>
-    <div style="text-align: left;" class="subtitulo">Provas Antigas - Transformada de Laplace<br></div>
-
-    <table>
+    <table class="lista-provas">
       <tbody>
-
-        ___PROVAS___LAPLACE___
-
-      <tbody>
-    </table>
-
-
-    <!-- Fourier -->
-    <hr><br><br>
-    <div style="text-align: left;" class="subtitulo">Provas Antigas - Séries e Transformadas de Fourier<br></div>
-
-    <table>
-      <tbody>
-
-        ___PROVAS___FOURIER___
-
+        ___PROVAS___VETORIAL___
       </tbody>
-     </table>
+    </table>
+
+    <hr>
+
+    <div class="subtitulo">
+      Provas Antigas - Transformada de Laplace
+    </div>
+
+    <table class="lista-provas">
+      <tbody>
+        ___PROVAS___LAPLACE___
+      </tbody>
+    </table>
+
+    <hr>
+
+    <div class="subtitulo">
+      Provas Antigas - Séries e Transformadas de Fourier
+    </div>
+
+    <table class="lista-provas">
+      <tbody>
+        ___PROVAS___FOURIER___
+      </tbody>
+    </table>
+
+    <hr>
   </body>
-<hr><br><br>
 </html>

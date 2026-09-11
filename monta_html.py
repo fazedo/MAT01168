@@ -24,15 +24,19 @@ turmas = {
 
 template_area = """
         <tr>
-          <td><a href="___DIRNAME___/___FILENAME___">___DESCRICAO___</a></td>
-          <td></td>
-          <td>___GABARITO___</td>
+          <td class="prova">
+            <a href="___DIRNAME___/___FILENAME___">___DESCRICAO___</a>
+          </td>
+          <td class="gabarito">
+            ___GABARITO___
+          </td>
         </tr>
 """
 
-template_gabarito = (
-    '<a href="___DIRNAME___/___FILENAME___">Gabarito</a>'
-)
+template_gabarito = """
+<a class="link-gabarito"
+   href="___DIRNAME___/___FILENAME___">Gabarito</a>
+"""
 
 
 def parse_nome(nome):
@@ -114,7 +118,6 @@ def completa_template_area(dirname):
             raise ValueError(f"Arquivo inválido: {nome}")
 
         turma, ano, semestre, gab, prof = dados
-
         chave = (turma, ano, semestre, prof)
 
         if gab:
@@ -137,7 +140,6 @@ def completa_template_area(dirname):
 
     for chave, nome_prova in provas.items():
         turma, ano, semestre, prof = chave
-
         nome_prof = professores[prof]
 
         comentario = (
@@ -149,10 +151,7 @@ def completa_template_area(dirname):
             texto_gabarito = (
                 template_gabarito
                 .replace("___DIRNAME___", dirname)
-                .replace(
-                    "___FILENAME___",
-                    gabaritos[chave],
-                )
+                .replace("___FILENAME___", gabaritos[chave])
             )
         else:
             texto_gabarito = ""
@@ -186,9 +185,7 @@ def completa_template_area(dirname):
         )
     )
 
-    return "\n".join(
-        item[-1] for item in lista_provas
-    )
+    return "\n".join(item[-1] for item in lista_provas)
 
 
 def main():
@@ -224,9 +221,7 @@ def main():
     ) as arquivo:
         arquivo.write(texto_final)
 
-    print(
-        f"Arquivo {arquivo_saida} criado com sucesso."
-    )
+    print(f"Arquivo {arquivo_saida} criado com sucesso.")
 
 
 if __name__ == "__main__":
