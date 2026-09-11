@@ -47,20 +47,54 @@
         margin-bottom: 30px;
       }
 
+      .area {
+        max-width: 900px;
+        margin: 20px 0;
+      }
+
+      .area summary {
+        cursor: pointer;
+        font-size: 28px;
+        font-weight: bold;
+        padding: 10px 0;
+      }
+
+      .area summary:hover {
+        color: #003399;
+      }
+
+      .area[open] summary {
+        margin-bottom: 10px;
+      }
+
       .lista-provas {
         border-collapse: collapse;
         width: 100%;
-        max-width: 900px;
-        margin-top: 10px;
-        margin-bottom: 30px;
+        margin-top: 5px;
+        margin-bottom: 20px;
       }
 
       .lista-provas tr {
         border-bottom: 1px solid #dddddd;
       }
 
+      .lista-provas .periodo {
+        border-bottom: 2px solid #bbbbbb;
+      }
+
+      .lista-provas .periodo td {
+        padding-top: 18px;
+        padding-bottom: 6px;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
       .lista-provas tr:hover {
         background-color: #f5f5f5;
+      }
+
+      .lista-provas .periodo:hover {
+        background-color: transparent;
       }
 
       .lista-provas td {
@@ -107,7 +141,8 @@
           font-size: 32px;
         }
 
-        .subtitulo {
+        .subtitulo,
+        .area summary {
           font-size: 24px;
         }
 
@@ -153,39 +188,35 @@
 
     <hr>
 
-    <div class="subtitulo">
-      Provas Antigas - Análise Vetorial
-    </div>
+    <details class="area">
+      <summary>Análise Vetorial</summary>
 
-    <table class="lista-provas">
-      <tbody>
-        ___PROVAS___VETORIAL___
-      </tbody>
-    </table>
+      <table class="lista-provas">
+        <tbody>
+          ___PROVAS___VETORIAL___
+        </tbody>
+      </table>
+    </details>
 
-    <hr>
+    <details class="area">
+      <summary>Transformada de Laplace</summary>
 
-    <div class="subtitulo">
-      Provas Antigas - Transformada de Laplace
-    </div>
+      <table class="lista-provas">
+        <tbody>
+          ___PROVAS___LAPLACE___
+        </tbody>
+      </table>
+    </details>
 
-    <table class="lista-provas">
-      <tbody>
-        ___PROVAS___LAPLACE___
-      </tbody>
-    </table>
+    <details class="area">
+      <summary>Séries e Transformadas de Fourier</summary>
 
-    <hr>
-
-    <div class="subtitulo">
-      Provas Antigas - Séries e Transformadas de Fourier
-    </div>
-
-    <table class="lista-provas">
-      <tbody>
-        ___PROVAS___FOURIER___
-      </tbody>
-    </table>
+      <table class="lista-provas">
+        <tbody>
+          ___PROVAS___FOURIER___
+        </tbody>
+      </table>
+    </details>
 
     <hr>
   </body>

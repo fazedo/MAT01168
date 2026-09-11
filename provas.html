@@ -47,20 +47,54 @@
         margin-bottom: 30px;
       }
 
+      .area {
+        max-width: 900px;
+        margin: 20px 0;
+      }
+
+      .area summary {
+        cursor: pointer;
+        font-size: 28px;
+        font-weight: bold;
+        padding: 10px 0;
+      }
+
+      .area summary:hover {
+        color: #003399;
+      }
+
+      .area[open] summary {
+        margin-bottom: 10px;
+      }
+
       .lista-provas {
         border-collapse: collapse;
         width: 100%;
-        max-width: 900px;
-        margin-top: 10px;
-        margin-bottom: 30px;
+        margin-top: 5px;
+        margin-bottom: 20px;
       }
 
       .lista-provas tr {
         border-bottom: 1px solid #dddddd;
       }
 
+      .lista-provas .periodo {
+        border-bottom: 2px solid #bbbbbb;
+      }
+
+      .lista-provas .periodo td {
+        padding-top: 18px;
+        padding-bottom: 6px;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
       .lista-provas tr:hover {
         background-color: #f5f5f5;
+      }
+
+      .lista-provas .periodo:hover {
+        background-color: transparent;
       }
 
       .lista-provas td {
@@ -107,7 +141,8 @@
           font-size: 32px;
         }
 
-        .subtitulo {
+        .subtitulo,
+        .area summary {
           font-size: 24px;
         }
 
@@ -153,13 +188,17 @@
 
     <hr>
 
-    <div class="subtitulo">
-      Provas Antigas - Análise Vetorial
-    </div>
+    <details class="area">
+      <summary>Análise Vetorial</summary>
 
-    <table class="lista-provas">
-      <tbody>
-        
+      <table class="lista-provas">
+        <tbody>
+          
+        <tr class="periodo">
+          <td colspan="2">2026</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Vetorial/prova20261_A_ESE.pdf">Turma A 2026/1 - prof. Esequia Sauter</a>
@@ -183,6 +222,11 @@
    href="Vetorial/prova20261_C_FSA_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2025</td>
         </tr>
 
 
@@ -251,6 +295,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2024</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Vetorial/prova20242_A1_ESE.pdf">Turma A1 2024/2 - prof. Esequia Sauter</a>
@@ -300,6 +349,11 @@
    href="Vetorial/prova20241_D_ESE_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2023</td>
         </tr>
 
 
@@ -381,6 +435,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2022</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Vetorial/prova20222_A_JBC.pdf">Turma A 2022/2 - prof. João Batista</a>
@@ -459,6 +518,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2019</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Vetorial/prova20192_A_ESE.pdf">Turma A 2019/2 - prof. Esequia Sauter</a>
@@ -518,6 +582,11 @@
           <td class="gabarito">
             
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2018</td>
         </tr>
 
 
@@ -596,6 +665,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2017</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Vetorial/prova20172_A_ESE.pdf">Turma A 2017/2 - prof. Esequia Sauter</a>
@@ -648,6 +722,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2016</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Vetorial/prova20161_A_ESE.pdf">Turma A 2016/1 - prof. Esequia Sauter</a>
@@ -675,6 +754,11 @@
           <td class="gabarito">
             
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2015</td>
         </tr>
 
 
@@ -717,6 +801,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2014</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Vetorial/prova20141_C_FSA.pdf">Turma C 2014/1 - prof. Fabio Azevedo</a>
@@ -727,6 +816,11 @@
    href="Vetorial/prova20141_C_FSA_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2012</td>
         </tr>
 
 
@@ -766,6 +860,11 @@
    href="Vetorial/prova20121_B_FSA_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2011</td>
         </tr>
 
 
@@ -814,18 +913,21 @@
           </td>
         </tr>
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </details>
 
-    <hr>
+    <details class="area">
+      <summary>Transformada de Laplace</summary>
 
-    <div class="subtitulo">
-      Provas Antigas - Transformada de Laplace
-    </div>
+      <table class="lista-provas">
+        <tbody>
+          
+        <tr class="periodo">
+          <td colspan="2">2026</td>
+        </tr>
 
-    <table class="lista-provas">
-      <tbody>
-        
+
         <tr>
           <td class="prova">
             <a href="Laplace/prova20261_A_ESE.pdf">Turma A 2026/1 - prof. Esequia Sauter</a>
@@ -836,6 +938,11 @@
    href="Laplace/prova20261_A_ESE_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2025</td>
         </tr>
 
 
@@ -904,6 +1011,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2024</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Laplace/prova20242_A1_ESE.pdf">Turma A1 2024/2 - prof. Esequia Sauter</a>
@@ -940,6 +1052,11 @@
    href="Laplace/prova20241_D_ESE_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2023</td>
         </tr>
 
 
@@ -1034,6 +1151,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2022</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Laplace/prova20222_A_JBC.pdf">Turma A 2022/2 - prof. João Batista</a>
@@ -1112,6 +1234,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2019</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Laplace/prova20192_A_ESE.pdf">Turma A 2019/2 - prof. Esequia Sauter</a>
@@ -1161,6 +1288,11 @@
    href="Laplace/prova20191_D_ESE_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2018</td>
         </tr>
 
 
@@ -1216,6 +1348,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2017</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Laplace/prova20172_A_ESE.pdf">Turma A 2017/2 - prof. Esequia Sauter</a>
@@ -1265,6 +1402,11 @@
    href="Laplace/prova20171_C_FSA_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2016</td>
         </tr>
 
 
@@ -1327,6 +1469,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2015</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Laplace/prova20152_A_ESE.pdf">Turma A 2015/2 - prof. Esequia Sauter</a>
@@ -1350,6 +1497,11 @@
    href="Laplace/prova20151_C_ESE_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2012</td>
         </tr>
 
 
@@ -1379,6 +1531,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2011</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Laplace/prova20112_A_FSA.pdf">Turma A 2011/2 - prof. Fabio Azevedo</a>
@@ -1404,18 +1561,21 @@
           </td>
         </tr>
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </details>
 
-    <hr>
+    <details class="area">
+      <summary>Séries e Transformadas de Fourier</summary>
 
-    <div class="subtitulo">
-      Provas Antigas - Séries e Transformadas de Fourier
-    </div>
+      <table class="lista-provas">
+        <tbody>
+          
+        <tr class="periodo">
+          <td colspan="2">2026</td>
+        </tr>
 
-    <table class="lista-provas">
-      <tbody>
-        
+
         <tr>
           <td class="prova">
             <a href="Fourier/prova20261_A_ESE.pdf">Turma A 2026/1 - prof. Esequia Sauter</a>
@@ -1426,6 +1586,11 @@
    href="Fourier/prova20261_A_ESE_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2025</td>
         </tr>
 
 
@@ -1494,6 +1659,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2024</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Fourier/prova20242_A_ESE.pdf">Turma A 2024/2 - prof. Esequia Sauter</a>
@@ -1530,6 +1700,11 @@
    href="Fourier/prova20241_D_ESE_gab.pdf">Gabarito</a>
 
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2023</td>
         </tr>
 
 
@@ -1624,6 +1799,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2022</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Fourier/prova20222_A_JBC.pdf">Turma A 2022/2 - prof. João Batista</a>
@@ -1702,6 +1882,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2019</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Fourier/prova20192_A_ESE.pdf">Turma A 2019/2 - prof. Esequia Sauter</a>
@@ -1735,6 +1920,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2018</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Fourier/prova20182_C_ESE.pdf">Turma C 2018/2 - prof. Esequia Sauter</a>
@@ -1761,6 +1951,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2017</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Fourier/prova20172_A_ESE.pdf">Turma A 2017/2 - prof. Esequia Sauter</a>
@@ -1781,6 +1976,11 @@
           <td class="gabarito">
             
           </td>
+        </tr>
+
+
+        <tr class="periodo">
+          <td colspan="2">2012</td>
         </tr>
 
 
@@ -1810,6 +2010,11 @@
         </tr>
 
 
+        <tr class="periodo">
+          <td colspan="2">2011</td>
+        </tr>
+
+
         <tr>
           <td class="prova">
             <a href="Fourier/prova20112_A_FSA.pdf">Turma A 2011/2 - prof. Fabio Azevedo</a>
@@ -1835,8 +2040,9 @@
           </td>
         </tr>
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </details>
 
     <hr>
   </body>

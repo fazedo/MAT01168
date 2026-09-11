@@ -185,7 +185,23 @@ def completa_template_area(dirname):
         )
     )
 
-    return "\n".join(item[-1] for item in lista_provas)
+    linhas = []
+    ano_atual = None
+
+    for ano, semestre, turma, nome_prof, texto_questao in lista_provas:
+        if ano != ano_atual:
+            linhas.append(
+                f"""
+        <tr class="periodo">
+          <td colspan="2">{ano}</td>
+        </tr>
+"""
+            )
+            ano_atual = ano
+
+        linhas.append(texto_questao)
+
+    return "\n".join(linhas)
 
 
 def main():
